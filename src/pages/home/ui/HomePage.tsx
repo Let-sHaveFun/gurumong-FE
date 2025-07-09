@@ -1,5 +1,6 @@
 import { Box, Button, Dialog } from '@vapor-ui/core';
 import { useState } from 'react';
+import { DrawerTest } from './DrawerTest';
 
 export function HomePage() {
   const [count, setCount] = useState(0);
@@ -8,12 +9,10 @@ export function HomePage() {
     <Box>
       <h1 className="text-2xl font-bold">Home</h1>
       <Button onClick={() => setCount(count + 1)}>Click me {count}</Button>
-
       <div className="flex gap-2">
         <span className="text-blue-500">tailwind style test</span>
         <div className="bg-red-500 w-10 h-10" />
       </div>
-
       <Dialog.Root>
         <Dialog.Trigger asChild>
           <Button>클릭</Button>
@@ -31,6 +30,8 @@ export function HomePage() {
           </Dialog.Footer>
         </Dialog.CombinedContent>
       </Dialog.Root>
+
+      <DrawerTest />
     </Box>
   );
 }

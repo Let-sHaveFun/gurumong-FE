@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 
-import { HomePage } from '@/pages/HomePage';
+import { HomePage } from '@/pages/home/ui/HomePage';
 import { TempPage } from '@/pages/temp';
 
 const router = createBrowserRouter([
