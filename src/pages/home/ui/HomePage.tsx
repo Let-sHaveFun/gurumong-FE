@@ -8,6 +8,7 @@ export function HomePage() {
   return (
     <Box>
       <h1 className="text-2xl font-bold">Home</h1>
+      <h2 className="text-3xl font-bold">테스트로 추가함 배포 </h2>
       <Button onClick={() => setCount(count + 1)}>Click me {count}</Button>
       <div className="flex gap-2">
         <span className="text-blue-500">tailwind style test</span>
