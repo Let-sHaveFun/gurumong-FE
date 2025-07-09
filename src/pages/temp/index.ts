@@ -1,2 +1,1 @@
-export * from './ui/TempPage'
-
+export * from './ui/TempPage';
