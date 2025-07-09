@@ -26,7 +26,7 @@ export function QRScanner({ onScan, onClose }: QRScannerProps) {
         stopScanning();
       },
       {
-        onDecodeError: (err) => {
+        onDecodeError: (err: any) => {
           // QR 코드를 찾지 못했을 때는 에러로 처리하지 않음
           console.log('스캔 중...', err.message);
         },
@@ -91,7 +91,7 @@ export function QRScanner({ onScan, onClose }: QRScannerProps) {
     try {
       const cameras = await QrScanner.listCameras(true);
       if (cameras.length > 1) {
-        const currentCamera = await qrScanner.getCamera();
+        const currentCamera = await (qrScanner as any).getCamera();
         const nextCamera = cameras.find((camera) => camera.id !== currentCamera?.id);
         if (nextCamera) {
           await qrScanner.setCamera(nextCamera.id);
