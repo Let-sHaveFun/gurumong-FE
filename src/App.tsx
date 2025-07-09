@@ -1,7 +1,10 @@
-import './App.css';
-
-import { TempPage } from '@/pages/temp';
+import { QueryProvider } from '@/app/QueryProvider';
+import { Routes } from '@/pages/Routes';
 
 export default function App() {
-  return <TempPage />;
+  return (
+    <QueryProvider>
+      <Routes />
+    </QueryProvider>
+  );
 }
