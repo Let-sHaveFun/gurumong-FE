@@ -15,7 +15,7 @@ export function HomePage() {
       </div>
       <Dialog.Root>
         <Dialog.Trigger asChild>
-          <Button>클릭</Button>
+          <Button>Vapor UI 클릭</Button>
         </Dialog.Trigger>
         <Dialog.CombinedContent>
           <Dialog.Header>

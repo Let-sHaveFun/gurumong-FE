@@ -7,13 +7,13 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from '@/components/ui/drawer';
+} from '@/shared/ui/drawer';
 import { Button } from '@vapor-ui/core';
 
 export function DrawerTest() {
   return (
     <Drawer>
-      <DrawerTrigger>Open</DrawerTrigger>
+      <DrawerTrigger>shadcn drawer Open</DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Are you absolutely sure?</DrawerTitle>
