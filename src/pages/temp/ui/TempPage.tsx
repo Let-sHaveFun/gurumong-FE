@@ -1,3 +1,3 @@
 export const TempPage = () => {
-  return <div>TempPage</div>
-}
+  return <div>TempPage 2</div>;
+};

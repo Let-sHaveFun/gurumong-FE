@@ -1,7 +1,7 @@
-import './App.css'
+import './App.css';
 
-function App() {
-  return <div>Home</div>
+import { TempPage } from '@/pages/temp';
+
+export default function App() {
+  return <TempPage />;
 }
-
-export default App

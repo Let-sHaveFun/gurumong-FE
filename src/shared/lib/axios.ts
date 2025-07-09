@@ -1,6 +1,6 @@
-import axios, { type CreateAxiosDefaults } from 'axios'
+import axios, { type CreateAxiosDefaults } from 'axios';
 
-export const API_BASE_URL = import.meta.env.VITE_BASE_URL
+export const API_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const baseConfig: CreateAxiosDefaults = {
   baseURL: API_BASE_URL,
@@ -8,6 +8,6 @@ const baseConfig: CreateAxiosDefaults = {
     'Content-Type': 'application/json',
   },
   withCredentials: true,
-}
+};
 
-export const apiClient = axios.create(baseConfig)
+export const apiClient = axios.create(baseConfig);
