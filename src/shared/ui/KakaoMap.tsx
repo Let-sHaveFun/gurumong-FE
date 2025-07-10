@@ -7,6 +7,7 @@ import IconButton from '@/pages/home/ui/IconButton';
 import { getNearbyHeritages, type Heritage } from '@/pages/home/api/getNearbyHeritages.mock';
 import { SpotCard } from '@/pages/home/ui/SpotCard';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { SearchBar } from '@/shared/ui/SearchBar';
 
 type Location = { lat: number; lng: number };
 
@@ -63,6 +64,9 @@ export const KakaoMap = () => {
 
   return (
     <div className="relative w-full h-full">
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 w-full max-w-[393px] px-4">
+        <SearchBar />
+      </div>
       <Map
         center={location}
         style={{ width: '100%', height: '100%' }}
