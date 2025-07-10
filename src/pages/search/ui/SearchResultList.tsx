@@ -3,7 +3,7 @@ import { LocationIcon } from '@vapor-ui/icons';
 import { useNavigate } from 'react-router-dom';
 
 type Props = {
-  results: Heritage[];
+  results: any[];
   onSelect: (heritage: Heritage) => void;
 };
 
@@ -19,7 +19,7 @@ export function SearchResultList({ results, onSelect }: Props) {
           key={heritage.id}
           onClick={() => {
             onSelect(heritage);
-            navigate(`/search?query=${encodeURIComponent(heritage.name)}&id=${heritage.id}`);
+            navigate(`/search?query=${encodeURIComponent(heritage.name)}&id=${heritage['external_id']}`);
           }}
           className="flex items-start gap-4 p-4 hover:bg-gray-50 cursor-pointer"
         >
