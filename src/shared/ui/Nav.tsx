@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LocationIcon, ExamIcon, UserIcon } from '@vapor-ui/icons';
+import { LocationIcon, ExamIcon, UserIcon, AiSmartieIcon } from '@vapor-ui/icons';
 import { Dialog } from '@vapor-ui/core';
 import { useState } from 'react';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 export function Nav() {
   const location = useLocation();
@@ -49,13 +50,24 @@ export function Nav() {
       </nav>
 
       <Dialog.Root open={isMyPageOpen} onOpenChange={setIsMyPageOpen}>
-        <Dialog.Overlay className="" />
-        <Dialog.CombinedContent className="w-[393px] h-[30%] p-10 border-none justify-center gap-2 z-[10] ">
-          <Dialog.Header>
-            <Dialog.Title>알림</Dialog.Title>
-          </Dialog.Header>
+        <Dialog.Overlay />
+        <Dialog.CombinedContent className="w-[360px] h-[30%] p-10 border-none justify-center gap-2 z-[10] ">
+          <VisuallyHidden>
+            <Dialog.Header>
+              <Dialog.Title>마이페이지 모달</Dialog.Title>
+            </Dialog.Header>
+          </VisuallyHidden>
           <Dialog.Body className="z-[10] flex flex-col justify-center items-center">
-            <span className="text-black z-[10]">Oops! 아직 준비중이에요. 🚀</span>
+            <div className="flex flex-col items-center justify-center p-6 text-center">
+              <div className="bg-blue-50 rounded-full p-4 mb-4">
+                <AiSmartieIcon size={40} color="var(--vapor-color-blue-400)" />
+              </div>
+
+              <h2 className="text-lg font-semibold text-gray-800">서비스 준비 중입니다</h2>
+              <p className="text-sm text-gray-500 mt-2">
+                아직 이 기능은 사용할 수 없어요. <br />곧 멋지게 찾아올게요 🚀
+              </p>
+            </div>
           </Dialog.Body>
           {/* <Dialog.Footer style={{ marginLeft: 'auto' }}>
             <button style={{ padding: '0.5rem 1rem' }}>확인</button>
