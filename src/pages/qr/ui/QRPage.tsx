@@ -1,14 +1,15 @@
-import { useState } from 'react';
-import { Button } from '@vapor-ui/core';
+// import { useState } from 'react';
+// import { Button } from '@vapor-ui/core';
 import { useNavigate } from 'react-router-dom';
 
 import { QRScanner } from '@/shared/ui/QRScanner';
+// import { useState } from 'react';
 
 export function QRPage() {
   const navigate = useNavigate();
 
-  const [showQRScanner, setShowQRScanner] = useState(true);
-  const [scannedResult, setScannedResult] = useState<string>('');
+  // const [showQRScanner, setShowQRScanner] = useState(true);
+  // const [scannedResult, setScannedResult] = useState<string>('');
 
   // const handleQRScan = (result: string) => {
   //   setScannedResult(result);
@@ -26,8 +27,8 @@ export function QRPage() {
   // };
 
   const handleQRScan = (result: string) => {
-    setScannedResult(result);
-    setShowQRScanner(false);
+    // setScannedResult(result);
+    // setShowQRScanner(false);
 
     console.log('스캔된 QR 코드:', result);
 
@@ -62,26 +63,26 @@ export function QRPage() {
     <div>
       {/* QR 스캐너 버튼 */}
       <div className="mt-4 space-y-2">
-        <Button onClick={() => setShowQRScanner(true)} className="w-full">
+        {/* <Button onClick={() => setShowQRScanner(true)} className="w-full">
           📱 QR 코드 스캔
-        </Button>
+        </Button> */}
 
-        {scannedResult && (
+        {/* {scannedResult && (
           <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
             <p className="text-sm text-green-700 font-medium">스캔 결과:</p>
             <p className="text-sm text-green-800 break-all">{scannedResult}</p>
           </div>
-        )}
+        )} */}
 
         {/* QR 스캐너 모달 */}
-        {showQRScanner && (
-          <QRScanner
-            onScan={handleQRScan}
-            onClose={() => {
-              setShowQRScanner(false);
-            }}
-          />
-        )}
+        {/* {showQRScanner && ( */}
+        <QRScanner
+          onScan={handleQRScan}
+          onClose={() => {
+            // setShowQRScanner(false);
+          }}
+        />
+        {/* )} */}
       </div>
     </div>
   );

@@ -7,7 +7,8 @@ interface QRScannerProps {
   onClose?: () => void;
 }
 
-export function QRScanner({ onScan, onClose }: QRScannerProps) {
+// export function QRScanner({ onScan, onClose }: QRScannerProps) {
+export function QRScanner({ onScan }: QRScannerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [qrScanner, setQrScanner] = useState<QrScanner | null>(null);
   const [isScanning, setIsScanning] = useState(false);
@@ -121,7 +122,7 @@ export function QRScanner({ onScan, onClose }: QRScannerProps) {
       {/* 헤더 */}
       <div className="flex justify-between items-center p-4 bg-black text-white">
         <h2 className="text-lg font-semibold">QR 코드 스캔</h2>
-        <button
+        {/* <button
           onClick={() => {
             stopScanning();
             onClose?.();
@@ -129,7 +130,7 @@ export function QRScanner({ onScan, onClose }: QRScannerProps) {
           className="text-2xl hover:text-gray-300"
         >
           ✕
-        </button>
+        </button> */}
       </div>
 
       {/* 에러 메시지 */}
