@@ -1,4 +1,3 @@
-// import { Box, Button, Dialog } from '@vapor-ui/core';
 import { KakaoMap } from '@/shared/ui';
 
 export function HomePage() {
