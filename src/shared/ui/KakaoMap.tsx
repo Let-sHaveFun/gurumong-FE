@@ -1,5 +1,5 @@
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/shared/ui/drawer';
 import { cn } from '@/lib/utils';
 import { BulletlistOutlineIcon, BookmarkIcon, ExploreIcon } from '@vapor-ui/icons';
@@ -16,6 +16,9 @@ export const KakaoMap = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeButton, setActiveButton] = useState<'list' | 'bookmark' | 'explore' | null>(null);
   const [activeHeritageId, setActiveHeritageId] = useState<string | null>(null);
+  const [center, setCenter] = useState<Location | null>(null); // 지도 중심 상태
+
+  const mapRef = useRef<kakao.maps.Map | null>(null);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -24,6 +27,7 @@ export const KakaoMap = () => {
           const { latitude, longitude } = position.coords;
           const userLocation = { lat: latitude, lng: longitude };
           setLocation(userLocation);
+          setCenter(userLocation);
 
           try {
             const heritages = await getNearbyHeritages(latitude, longitude);
@@ -48,7 +52,14 @@ export const KakaoMap = () => {
 
   return (
     <div className="relative w-full h-full">
-      <Map center={location} style={{ width: '100%', height: '100%' }} level={8}>
+      <Map
+        center={location}
+        style={{ width: '100%', height: '100%' }}
+        level={8}
+        onCreate={(map) => {
+          mapRef.current = map;
+        }}
+      >
         <MapMarker
           position={location}
           image={{
@@ -127,7 +138,14 @@ export const KakaoMap = () => {
           />
         </IconButton>
 
-        <IconButton onClick={() => setActiveButton('explore')}>
+        <IconButton
+          onClick={() => {
+            if (location && mapRef.current) {
+              mapRef.current.setCenter(new kakao.maps.LatLng(location.lat, location.lng));
+              setActiveButton('explore');
+            }
+          }}
+        >
           <ExploreIcon
             size={24}
             color={activeButton === 'explore' ? 'var(--vapor-color-blue-400)' : 'var(--vapor-color-gray-400)'}
