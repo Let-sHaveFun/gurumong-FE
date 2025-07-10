@@ -5,8 +5,9 @@ import badgeImage from '@/assets/badge.png'; // 경로에 맞게 수정해주세
 
 import { AudioPlayer } from './AudioPlayer';
 import { FixedBottom } from '@/shared/ui';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
+import { useDormungStore } from '@/shared/store';
 
 const legendText = `옛날 옛적, 제주 하늘이랑 땅이 아직 다 만들어지멍 살아지던 시절에, 커다란 거인 하나 살았주게. 그 할망 이름이 설문대할망이라 했주. 
 몸집이 어찌나 큰지, 발 한 번 딛으면 한라산에서 성산포까지 훌쩍 걸어댕길 수 있었주게.
@@ -25,9 +26,17 @@ const legendText = `옛날 옛적, 제주 하늘이랑 땅이 아직 다 만들�
 
 export function PlaceDetailPage() {
   const navigate = useNavigate();
+  const { placeId } = useParams();
+
   const [isBadgeOpen, setIsBadgeOpen] = useState(false);
 
+  const { badges, addBadge } = useDormungStore();
+
   const onCompleteAudio = () => {
+    if (!placeId) return;
+    if (badges.includes(Number(placeId))) return;
+
+    addBadge(Number(placeId));
     setIsBadgeOpen(true);
     // save 데이터 저장
   };
