@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import QrScanner from 'qr-scanner';
+import { Nav } from './Nav';
 
 interface QRScannerProps {
   onScan?: (result: string) => void;
@@ -47,6 +48,19 @@ export function QRScanner({ onScan, onClose }: QRScannerProps) {
       scanner.destroy();
     };
   }, [onScan]);
+
+  // 컴포넌트 마운트 시 자동으로 스캔 시작
+  useEffect(() => {
+    if (qrScanner) {
+      startScanning();
+    }
+  }, [qrScanner]);
+
+  useEffect(() => {
+    if (isScanning) {
+      startScanning();
+    }
+  }, [isScanning]);
 
   const startScanning = async () => {
     if (!qrScanner) return;
@@ -165,6 +179,7 @@ export function QRScanner({ onScan, onClose }: QRScannerProps) {
               )}
             </>
           )}
+          <Nav />
         </div>
       </div>
     </div>
