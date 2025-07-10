@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { BulletlistOutlineIcon, BookmarkIcon, ExploreIcon } from '@vapor-ui/icons';
 import IconButton from '@/pages/home/ui/IconButton';
 import { getNearbyHeritages, type Heritage } from '@/pages/home/api/getNearbyHeritages.mock';
+import { SpotCard } from '@/pages/home/ui/SpotCard';
 
 type Location = { lat: number; lng: number };
 
@@ -94,19 +95,14 @@ export const KakaoMap = () => {
             </IconButton>
           </DrawerTrigger>
 
-          <DrawerContent className="max-w-[393px] h-[350px] mx-auto rounded-[8px] border-none">
-            <DrawerHeader className="text-center mt-4">
+          <DrawerContent className="max-w-[393px] h-[350px] mx-auto rounded-[8px] border-none p-0">
+            <DrawerHeader className="text-center mt-4 p-0">
               {selectedHeritage ? (
-                <>
-                  <DrawerTitle className="text-base font-bold">{selectedHeritage.name}</DrawerTitle>
-                  <p className="text-gray-500 text-sm">{selectedHeritage.address}</p>
-                  <p className="text-blue-500 text-sm mt-1">내 위치로부터 {selectedHeritage.distance}m</p>
-                  {selectedHeritage.id === closestHeritage?.id && (
-                    <button className="bg-blue-500 text-white mt-4 px-4 py-2 rounded-md text-sm w-full">
-                      🎧 이야기조각 들으러 가기
-                    </button>
-                  )}
-                </>
+                <SpotCard
+                  title={selectedHeritage.name}
+                  address={selectedHeritage.address}
+                  distance={selectedHeritage.distance}
+                />
               ) : (
                 <DrawerTitle className="text-gray-500 text-sm">내 주위에 둘러볼 이야기조각이 없어요!</DrawerTitle>
               )}
