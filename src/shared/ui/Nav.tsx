@@ -1,21 +1,35 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { LocationIcon, ExamIcon, UserIcon } from '@vapor-ui/icons';
 
 export function Nav() {
+  const location = useLocation();
+
+  const navItems = [
+    { to: '/', icon: LocationIcon, label: '지도' },
+    { to: '/story-fragments', icon: ExamIcon, label: '이야기조각' },
+    { to: '/mypage', icon: UserIcon, label: '마이페이지' },
+  ];
+
   return (
-    <footer className="fixed bottom-0 w-full bg-white h-[60px] border-t mx-auto max-w-[393px]">
-      <nav className="flex justify-between items-center h-full relative bg-white ">
-        <Link to="/" className="flex-1 flex justify-center">
-          <span>지도</span>
-        </Link>
-        {/* TODO: QR UI 를 따로 빼서 관리하는게 나을듯! */}
-        <Link to="/qr" className="flex-1 flex justify-center">
-          {/* 볼록한 QR 코드 영역 */}
-          <div className="absolute bottom-0 w-[100px] h-[40px] bg-white rounded-t-[40px] flex items-center justify-center -translate-y-[56px] border-l border-r border-t border-gray-200 z"></div>
-          <img src="/qr.png" alt="qr" className="w-[100px] h-[80px] rounded-t-[40px] absolute bottom-0" />
-        </Link>
-        <Link to="/" className="flex-1 flex justify-center">
-          <span>마이페이지</span>
-        </Link>
+    <footer className="fixed bottom-0 w-full bg-white rounded-t-[8px] mx-auto max-w-[393px] px-[56px] pt-[12px] pb-[18px]">
+      <nav className="flex justify-between items-center bg-white">
+        {navItems.map(({ to, icon: Icon, label }) => {
+          const isActive = location.pathname === to;
+
+          return (
+            <Link key={to} to={to} className="flex flex-col justify-center items-center">
+              <Icon size={32} color={isActive ? 'var(--vapor-color-blue-400)' : 'var(--vapor-color-gray-400)'} />
+              <span
+                style={{
+                  color: isActive ? 'var(--vapor-color-blue-400)' : 'var(--vapor-color-gray-400)',
+                  fontSize: 'var(--vapor-typography-fontSize-050)',
+                }}
+              >
+                {label}
+              </span>
+            </Link>
+          );
+        })}
       </nav>
     </footer>
   );
