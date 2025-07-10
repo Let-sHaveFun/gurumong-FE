@@ -2,10 +2,10 @@ import { RecentKeywordList } from './RecentKeywordList';
 import { SearchInput } from './SearchInput';
 import { useState, useEffect } from 'react';
 import type { Heritage } from '@/mocks/mockHeritages';
-import { searchHeritages } from '@/mocks/searchHeritages';
 import { SearchResultList } from './SearchResultList';
 import { useSearchParams } from 'react-router-dom';
 import { ResultMap } from '@/shared/ui/ResultMap';
+import { search } from '../api';
 
 const LOCAL_KEY = 'recent_keywords';
 
@@ -35,25 +35,25 @@ const SearchPage = () => {
     setRecentKeywords(stored);
   }, []);
 
-  useEffect(() => {
-    if (!keyword.trim()) {
-      setResults([]);
-      return;
-    }
+  // useEffect(() => {
+  //   if (!keyword.trim()) {
+  //     setResults([]);
+  //     return;
+  //   }
 
-    const timeout = setTimeout(async () => {
-      const data = await searchHeritages(keyword);
-      setResults(data);
-    }, 300);
+  //   const timeout = setTimeout(async () => {
+  //     const data = await searchHeritages(keyword);
+  //     setResults(data);
+  //   }, 300);
 
-    return () => clearTimeout(timeout);
-  }, [keyword]);
+  //   return () => clearTimeout(timeout);
+  // }, [keyword]);
 
   if (query && id) {
     return <ResultMap query={query} id={id} />;
   }
 
-  const handleKeywordSubmit = (newKeyword: string) => {
+  const handleKeywordSubmit = async (newKeyword: string) => {
     if (!newKeyword.trim()) return;
 
     const filtered = recentKeywords.filter((k) => k !== newKeyword);
@@ -63,8 +63,10 @@ const SearchPage = () => {
     saveToLocalStorage(updated);
   };
 
-  const handleChange = (value: string) => {
+  const handleChange = async (value: string) => {
     setKeyword(value);
+    const data = await search(value);
+    setResults(data);
   };
 
   return (

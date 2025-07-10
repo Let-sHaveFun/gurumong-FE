@@ -4,7 +4,7 @@ import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from 
 import { cn } from '@/lib/utils';
 import { BulletlistOutlineIcon, BookmarkIcon, ExploreIcon } from '@vapor-ui/icons';
 import IconButton from '@/pages/home/ui/IconButton';
-import { getNearbyHeritages, type Heritage } from '@/pages/home/api/getNearbyHeritages.mock';
+import { getNearbyHeritages, type Heritage } from '@/pages/home/api/getNearbyHeritages';
 import { SpotCard } from '@/pages/home/ui/SpotCard';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { SearchBar } from '@/shared/ui/SearchBar';
@@ -15,7 +15,7 @@ type Location = { lat: number; lng: number };
 
 export const KakaoMap = () => {
   const [location, setLocation] = useState<Location | null>(null);
-  const [heritages, setHeritages] = useState<Heritage[]>([]);
+  const [heritages, setHeritages] = useState<any[]>([]);
   const [_selectedHeritage, setSelectedHeritage] = useState<Heritage | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeButton, setActiveButton] = useState<'list' | 'bookmark' | 'explore' | null>(null);
@@ -23,6 +23,15 @@ export const KakaoMap = () => {
   const [_center, setCenter] = useState<Location | null>(null);
 
   const mapRef = useRef<kakao.maps.Map | null>(null);
+
+  // useEffect(() => {
+  //   fetch('https://api.example.com/heritages')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setHeritages(data);
+  //       console.log(data);
+  //     });
+  // }, []);
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -39,6 +48,7 @@ export const KakaoMap = () => {
 
         try {
           const heritages = await getNearbyHeritages(latitude, longitude);
+          console.log('gyu', heritages);
           setHeritages(heritages);
           if (heritages.length > 0) {
             setActiveHeritageId(heritages[0].id);
@@ -105,18 +115,22 @@ export const KakaoMap = () => {
 
         {heritages.map((heritage) => (
           <MapMarker
-            key={heritage.id}
-            position={{ lat: heritage.lat, lng: heritage.lng }}
+            key={heritage['external_id']}
+            position={{ lat: heritage.latitude, lng: heritage.longitude }}
             onClick={() => {
-              setActiveHeritageId(heritage.id);
+              setActiveHeritageId(heritage['external_id']);
               setSelectedHeritage(heritage);
               setIsDrawerOpen(true);
               setActiveButton('list');
             }}
             image={{
-              src: heritage.id === activeHeritageId ? '/active-spot-marker.svg' : '/spot-marker.svg',
-              size: heritage.id === activeHeritageId ? { width: 40, height: 40 } : { width: 32, height: 32 },
-              options: heritage.id === activeHeritageId ? { offset: { x: 20, y: 40 } } : { offset: { x: 16, y: 32 } },
+              src: heritage['external_id'] === activeHeritageId ? '/active-spot-marker.svg' : '/spot-marker.svg',
+              size:
+                heritage['external_id'] === activeHeritageId ? { width: 40, height: 40 } : { width: 32, height: 32 },
+              options:
+                heritage['external_id'] === activeHeritageId
+                  ? { offset: { x: 20, y: 40 } }
+                  : { offset: { x: 16, y: 32 } },
             }}
           />
         ))}
@@ -161,8 +175,9 @@ export const KakaoMap = () => {
                 <div className="h-full min-h-[300px] overflow-y-auto">
                   {heritages.map((heritage) => (
                     <SpotCard
-                      key={heritage.id}
-                      id={heritage.id}
+                      imageUrl={heritage['imgpath']}
+                      key={heritage['external_id']}
+                      id={heritage['external_id']}
                       title={heritage.name}
                       address={heritage.address}
                       distance={heritage.distance}
