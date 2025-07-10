@@ -110,7 +110,16 @@ export const KakaoMap = () => {
           isDrawerOpen ? 'bottom-[300px]' : 'bottom-[40px]',
         )}
       >
-        <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen} snapPoints={[0.35, 1]}>
+        <Drawer
+          open={isDrawerOpen}
+          onOpenChange={(open) => {
+            setIsDrawerOpen(open);
+            if (!open) {
+              setActiveButton(null);
+            }
+          }}
+          snapPoints={[0.35, 1]}
+        >
           <DrawerTrigger asChild>
             <IconButton
               onClick={() => {
