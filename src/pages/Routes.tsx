@@ -30,14 +30,14 @@ const router = createBrowserRouter([
       </MobileLayoutWithoutNav>
     ),
   },
-  {
-    path: 'story-fragments',
-    element: (
-      <MobileLayoutWithoutNav>
-        <StoryFragmentPage />
-      </MobileLayoutWithoutNav>
-    ),
-  },
+  // {
+  //   path: 'story-fragments',
+  //   element: (
+  //     <MobileLayoutWithoutNav>
+  //       <StoryFragmentPage />
+  //     </MobileLayoutWithoutNav>
+  //   ),
+  // },
   {
     path: '/',
     element: (
@@ -53,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: 'onboarding',
         element: <SplashPage />,
+      },
+      {
+        path: 'story-fragments',
+        element: <StoryFragmentPage />,
       },
       {
         path: 'qr',
