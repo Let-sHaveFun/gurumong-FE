@@ -31,13 +31,21 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: 'story-fragments',
+    path: 'place/:placeId',
     element: (
       <MobileLayoutWithoutNav>
-        <StoryFragmentPage />
+        <PlaceDetailPage />
       </MobileLayoutWithoutNav>
     ),
   },
+  // {
+  //   path: 'story-fragments',
+  //   element: (
+  //     <MobileLayoutWithoutNav>
+  //       <StoryFragmentPage />
+  //     </MobileLayoutWithoutNav>
+  //   ),
+  // },
   {
     path: '/',
     element: (
@@ -55,6 +63,10 @@ const router = createBrowserRouter([
         element: <SplashPage />,
       },
       {
+        path: 'story-fragments',
+        element: <StoryFragmentPage />,
+      },
+      {
         path: 'qr',
         element: <QRPage />,
       },
@@ -66,10 +78,7 @@ const router = createBrowserRouter([
         path: 'mypage',
         element: <MyPage />,
       },
-      {
-        path: 'place/:placeId',
-        element: <PlaceDetailPage />,
-      },
+
       {
         path: 'temp',
         element: <TempPage />,
