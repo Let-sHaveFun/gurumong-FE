@@ -34,13 +34,17 @@ export const StoryFragmentPage = () => {
               gap="$100"
               alignContent="center"
               justifyContent="center"
-              className="w-[30%] h-[116px] bg-[#FEF8E5] flex flex-col gap-1 justify-center rounded-lg"
+              className="w-[30%] h-[116px] bg-[#FEF8E5] flex flex-col gap-1 justify-center items-center rounded-lg"
               onClick={() => {
                 navigate(`/place/${badge.id}`);
               }}
             >
-              <img src={badge.image} alt={`${badge.name} 이미지`} className="w-full h-[50px]" />
-              <Badge color="hint" size="sm" shape="pill" className="bg-white w-full">
+              <img
+                src={badge.image}
+                alt={`${badge.name} 이미지`}
+                className="w-full h-full max-w-[90%] max-h-[70px] object-contain"
+              />
+              <Badge color="hint" size="sm" shape="pill" className="bg-white w-fit">
                 <span className="text-center w-full block overflow-hidden whitespace-nowrap text-ellipsis">
                   {badge.name}
                 </span>
@@ -57,11 +61,11 @@ export const StoryFragmentPage = () => {
               gap="$100"
               alignContent="center"
               justifyContent="center"
-              className="w-[30%] h-[116px] bg-[#FEF8E5] flex flex-col gap-1 justify-center rounded-lg"
+              className="w-[30%] h-[116px] bg-[#FEF8E5] flex flex-col gap-1 justify-center items-center rounded-lg"
             >
-              <div className="w-full h-[50px]"></div>
+              <div className="w-full h-[70px]"></div>
 
-              <Badge color="hint" size="sm" shape="pill" className="bg-white w-full">
+              <Badge color="hint" size="sm" shape="pill" className="bg-white w-fit">
                 <span className="text-center w-full">???</span>
               </Badge>
             </Flex>
