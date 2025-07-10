@@ -998,7 +998,7 @@ export const MOCK_DATA = [
   },
   {
     external_id: 'CONT_000000000500349',
-    name: '성산일출봉(UNESCO 세계자연유산)',
+    name: '성산일출봉',
     address: '제주특별자치도 서귀포시 성산읍 일출로 284-12',
     latitude: 33.462147,
     longitude: 126.936424,
