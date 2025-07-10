@@ -58,7 +58,7 @@ export function PlaceDetailPage() {
     <Box className="bg-[#558CF5]">
       <Flex gap="$100" flexDirection="column" padding="$000">
         <header className="px-4 py-3 ">
-          <Flex gap="$100" alignItems="center" justifyContent="center">
+          <Flex gap="$100" alignItems="center" justifyContent="center" className="flex">
             <BackPageOutlineIcon width={24} height={24} className="text-white" onClick={() => navigate('/')} />
             <Text typography="heading5" className="w-full text-center text-white">
               성산일출봉
@@ -86,7 +86,7 @@ export function PlaceDetailPage() {
 
         <Dialog.Root open={isBadgeOpen} onOpenChange={setIsBadgeOpen}>
           <Dialog.Overlay className="" />
-          <Dialog.CombinedContent className="w-[393px] h-full p-10 bg-transparent border-none">
+          <Dialog.CombinedContent className="w-[393px] h-full p-10 bg-transparent border-none justify-center gap-2">
             <Flex flexDirection="column" gap="$100">
               <img src={badgeImage} alt="badge" className="w-[300px] h-[300px] object-cover" />
               <Badge
