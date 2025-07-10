@@ -10,6 +10,7 @@ import { PlaceDetailPage } from './place-detail';
 import { SplashPage } from './SplashPage';
 import { MobileLayoutWithoutNav } from '@/shared/ui/MobileLayoutWithoutNav';
 import { OnboardingPage } from './Onboarding';
+import { FirstVisitCheckProvider } from '@/shared/ui/FirstVisitCheckProvider';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <MobileLayout />,
+    element: (
+      <FirstVisitCheckProvider>
+        <MobileLayout />
+      </FirstVisitCheckProvider>
+    ),
     children: [
       {
         index: true,
