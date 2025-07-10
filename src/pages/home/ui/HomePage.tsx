@@ -1,8 +1,7 @@
 import { Box, Button, Dialog } from '@vapor-ui/core';
 import { useState } from 'react';
 import { DrawerTest } from './DrawerTest';
-import { QRScanner } from '@/shared/ui/QRScanner';
-import KakaoMap from '@/components/KakaoMap';
+import { QRScanner, KakaoMap } from '@/shared/ui';
 
 export function HomePage() {
   const [count, setCount] = useState(0);

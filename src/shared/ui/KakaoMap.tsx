@@ -1,14 +1,12 @@
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 
-const KakaoMap = () => {
+export const KakaoMap = () => {
   return (
     <Map center={{ lat: 33.450701, lng: 126.570667 }} style={{ width: '100%', height: '400px' }} level={3}>
       <MapMarker position={{ lat: 33.450701, lng: 126.570667 }} />
     </Map>
   );
 };
-
-export default KakaoMap;
 
 // import { useEffect } from 'react';
 
