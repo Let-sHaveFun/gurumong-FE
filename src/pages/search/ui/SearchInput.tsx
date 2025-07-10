@@ -5,9 +5,10 @@ import { CameraIcon, BackPageOutlineIcon, CloseOutlineIcon } from '@vapor-ui/ico
 type Props = {
   value: string;
   onChange: (value: string) => void;
+  onSubmit?: (value: string) => void;
 };
 
-export function SearchInput({ value, onChange }: Props) {
+export function SearchInput({ value, onChange, onSubmit }: Props) {
   const navigate = useNavigate();
 
   const handleCameraClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -28,6 +29,11 @@ export function SearchInput({ value, onChange }: Props) {
           onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
           placeholder="안내판을 검색해보세요..."
           className="w-full rounded-[8px] bg-white px-[16px] py-[12px] pl-[32px] shadow text-sm "
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              onSubmit?.(value); // 🔹 엔터 누르면 제출
+            }
+          }}
         />
 
         <button onClick={handleBackClick} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-600">
