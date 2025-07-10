@@ -1,9 +1,32 @@
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import { useState, useEffect } from 'react';
 
 export const KakaoMap = () => {
+  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLocation({ lat: latitude, lng: longitude });
+        },
+        (error) => {
+          console.error('위치 정보를 가져오는데 실패했습니다:', error);
+        },
+      );
+    } else {
+      console.error('Geolocation을 지원하지 않는 브라우저입니다.');
+    }
+  }, []);
+
+  if (!location) {
+    return <p>내 위치를 불러오는 중...</p>;
+  }
+
   return (
-    <Map center={{ lat: 33.450701, lng: 126.570667 }} style={{ width: '100%', height: '400px' }} level={3}>
-      <MapMarker position={{ lat: 33.450701, lng: 126.570667 }} />
+    <Map center={location} style={{ width: '100%', height: '100%' }} level={3}>
+      <MapMarker position={location} />
     </Map>
   );
 };

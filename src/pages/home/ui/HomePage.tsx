@@ -22,7 +22,7 @@ export function HomePage() {
   };
 
   return (
-    <Box>
+    <Box className="h-full">
       <h1 className="text-2xl font-bold">Home</h1>
       <Button onClick={() => setCount(count + 1)}>Click me {count}</Button>
 
@@ -65,8 +65,8 @@ export function HomePage() {
           </Dialog.Footer>
         </Dialog.CombinedContent>
       </Dialog.Root>
-      <KakaoMap />
       <DrawerTest />
+      <KakaoMap />
     </Box>
   );
 }
