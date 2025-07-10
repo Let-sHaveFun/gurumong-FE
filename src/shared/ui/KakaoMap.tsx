@@ -8,6 +8,8 @@ import { getNearbyHeritages, type Heritage } from '@/pages/home/api/getNearbyHer
 import { SpotCard } from '@/pages/home/ui/SpotCard';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { SearchBar } from '@/shared/ui/SearchBar';
+import { NoResult } from '@/shared/ui/NoResult';
+import LoadingSpinner from '@/shared/ui/LoadingSpinner';
 
 type Location = { lat: number; lng: number };
 
@@ -60,7 +62,12 @@ export const KakaoMap = () => {
     };
   }, []);
 
-  if (!location) return <p>내 위치를 불러오는 중...</p>;
+  if (!location)
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <LoadingSpinner />
+      </div>
+    );
 
   return (
     <div className="relative w-full h-full">
@@ -73,6 +80,18 @@ export const KakaoMap = () => {
         level={8}
         onCreate={(map) => {
           mapRef.current = map;
+        }}
+        onCenterChanged={() => {
+          if (mapRef.current && location) {
+            const center = mapRef.current.getCenter();
+            const dx = center.getLat() - location.lat;
+            const dy = center.getLng() - location.lng;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance > 0.0005) {
+              setActiveButton((prev) => (prev === 'explore' ? null : prev));
+            }
+          }
         }}
       >
         <MapMarker
@@ -109,7 +128,16 @@ export const KakaoMap = () => {
           isDrawerOpen ? 'bottom-[300px]' : 'bottom-[40px]',
         )}
       >
-        <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen} snapPoints={[0.35, 1]}>
+        <Drawer
+          open={isDrawerOpen}
+          onOpenChange={(open) => {
+            setIsDrawerOpen(open);
+            if (!open) {
+              setActiveButton(null);
+            }
+          }}
+          snapPoints={[0.35, 1]}
+        >
           <DrawerTrigger asChild>
             <IconButton
               onClick={() => {
@@ -134,6 +162,7 @@ export const KakaoMap = () => {
                   {heritages.map((heritage) => (
                     <SpotCard
                       key={heritage.id}
+                      id={heritage.id}
                       title={heritage.name}
                       address={heritage.address}
                       distance={heritage.distance}
@@ -143,7 +172,7 @@ export const KakaoMap = () => {
                   ))}
                 </div>
               ) : (
-                <DrawerTitle className="text-gray-500 text-sm">내 주위에 둘러볼 이야기조각이 없어요!</DrawerTitle>
+                <NoResult />
               )}
             </DrawerHeader>
           </DrawerContent>
