@@ -2,7 +2,6 @@ import { RecentKeywordList } from './RecentKeywordList';
 import { SearchInput } from './SearchInput';
 import { useState, useEffect } from 'react';
 import type { Heritage } from '@/mocks/mockHeritages';
-import { searchHeritages } from '@/mocks/searchHeritages';
 import { SearchResultList } from './SearchResultList';
 import { useSearchParams } from 'react-router-dom';
 import { ResultMap } from '@/shared/ui/ResultMap';
