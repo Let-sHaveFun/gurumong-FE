@@ -9,6 +9,7 @@ import { SpotCard } from '@/pages/home/ui/SpotCard';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { SearchBar } from '@/shared/ui/SearchBar';
 import { NoResult } from '@/shared/ui/NoResult';
+import LoadingSpinner from '@/shared/ui/LoadingSpinner';
 
 type Location = { lat: number; lng: number };
 
@@ -61,7 +62,12 @@ export const KakaoMap = () => {
     };
   }, []);
 
-  if (!location) return <p>내 위치를 불러오는 중...</p>;
+  if (!location)
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <LoadingSpinner />
+      </div>
+    );
 
   return (
     <div className="relative w-full h-full">
