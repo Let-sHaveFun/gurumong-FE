@@ -16,36 +16,46 @@ export const KakaoMap = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeButton, setActiveButton] = useState<'list' | 'bookmark' | 'explore' | null>(null);
   const [activeHeritageId, setActiveHeritageId] = useState<string | null>(null);
-  const [center, setCenter] = useState<Location | null>(null); // 지도 중심 상태
+  const [center, setCenter] = useState<Location | null>(null);
 
   const mapRef = useRef<kakao.maps.Map | null>(null);
 
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const { latitude, longitude } = position.coords;
-          const userLocation = { lat: latitude, lng: longitude };
-          setLocation(userLocation);
-          setCenter(userLocation);
-
-          try {
-            const heritages = await getNearbyHeritages(latitude, longitude);
-            setHeritages(heritages);
-            if (heritages.length > 0) {
-              setActiveHeritageId(heritages[0].id);
-            }
-          } catch (error) {
-            console.error('유적지 정보를 불러오는 데 실패했습니다:', error);
-          }
-        },
-        (error) => {
-          console.error('위치 정보를 가져오는데 실패했습니다:', error);
-        },
-      );
-    } else {
+    if (!navigator.geolocation) {
       console.error('Geolocation을 지원하지 않는 브라우저입니다.');
+      return;
     }
+
+    const watchId = navigator.geolocation.watchPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        const userLocation = { lat: latitude, lng: longitude };
+        setLocation(userLocation);
+        setCenter(userLocation);
+
+        try {
+          const heritages = await getNearbyHeritages(latitude, longitude);
+          setHeritages(heritages);
+          if (heritages.length > 0) {
+            setActiveHeritageId(heritages[0].id);
+          }
+        } catch (error) {
+          console.error('유적지 정보를 불러오는 데 실패했습니다:', error);
+        }
+      },
+      (error) => {
+        console.error('위치 정보를 가져오는데 실패했습니다:', error);
+      },
+      {
+        enableHighAccuracy: true,
+        maximumAge: 0,
+        timeout: 5000,
+      },
+    );
+
+    return () => {
+      navigator.geolocation.clearWatch(watchId);
+    };
   }, []);
 
   if (!location) return <p>내 위치를 불러오는 중...</p>;
