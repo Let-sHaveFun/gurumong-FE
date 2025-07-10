@@ -1,6 +1,7 @@
 import { Box, Button, Dialog } from '@vapor-ui/core';
 import { useState } from 'react';
 import { DrawerTest } from './DrawerTest';
+import KakaoMap from '@/components/KakaoMap';
 
 export function HomePage() {
   const [count, setCount] = useState(0);
@@ -30,7 +31,7 @@ export function HomePage() {
           </Dialog.Footer>
         </Dialog.CombinedContent>
       </Dialog.Root>
-
+      <KakaoMap />
       <DrawerTest />
     </Box>
   );
