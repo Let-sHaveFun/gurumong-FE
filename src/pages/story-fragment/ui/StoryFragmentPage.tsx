@@ -13,7 +13,7 @@ export const StoryFragmentPage = () => {
   const restEmptyBadges = 15 - count;
   return (
     <Box className="bg-[#558CF5] min-h-screen px-4 pb-10">
-      <Flex gap="$100" flexDirection="column" padding="$000">
+      <Flex gap="$100" flexDirection="column" padding="$000" className="flex">
         <header className="py-3 ">
           <Flex gap="$100" flexDirection="column" className="mt-8">
             <ExamIcon width={32} height={32} className="text-white" />
@@ -24,7 +24,7 @@ export const StoryFragmentPage = () => {
         </header>
       </Flex>
 
-      <Flex gap="$100" className="mt-8 flex-wrap" justifyContent="center">
+      <Flex gap="$100" className="mt-8 flex-wrap flex gap-2 justify-center" justifyContent="center">
         {badges.map((badge, idx) => {
           return (
             <Flex
@@ -33,7 +33,7 @@ export const StoryFragmentPage = () => {
               gap="$100"
               alignContent="center"
               justifyContent="center"
-              className="w-[110px] h-[116px] bg-[#FEF8E5]"
+              className="w-[30%] h-[116px] bg-[#FEF8E5] flex flex-col gap-1 justify-center"
               onClick={() => {
                 navigate(`/place/${badge.id}`);
               }}
@@ -56,7 +56,7 @@ export const StoryFragmentPage = () => {
               gap="$100"
               alignContent="center"
               justifyContent="center"
-              className="w-[110px] h-[116px] bg-[#FEF8E5]"
+              className="w-[30%] h-[116px] bg-[#FEF8E5] flex flex-col gap-1 justify-center"
             >
               <div className="w-full h-[50px]"></div>
 

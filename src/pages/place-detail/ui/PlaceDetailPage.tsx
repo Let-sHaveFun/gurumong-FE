@@ -8,7 +8,7 @@ import { FixedBottom } from '@/shared/ui';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useDormungStore } from '@/shared/store';
-import { BADGE_IMAGES } from '@/shared/constants/badge-images';
+// import { BADGE_IMAGES } from '@/shared/constants/badge-images';
 
 const legendText = `옛날 옛적, 제주 하늘이랑 땅이 아직 다 만들어지멍 살아지던 시절에, 커다란 거인 하나 살았주게. 그 할망 이름이 설문대할망이라 했주. 
 몸집이 어찌나 큰지, 발 한 번 딛으면 한라산에서 성산포까지 훌쩍 걸어댕길 수 있었주게.
@@ -45,12 +45,13 @@ export function PlaceDetailPage() {
     // 성산일출봉 추가 로직
     if (placeId === 'CONT_000000000500349') {
       addBadge({ id: placeId, name: '성산일출봉', image: '/story-fragment-4.png' });
+      setIsBadgeOpen(true);
       return;
     }
 
     // 다른 장소 추가 로직 (API 의 이름으로 할 예정)
-    addBadge({ id: placeId, name: '아무개', image: BADGE_IMAGES[Math.floor(Math.random() * BADGE_IMAGES.length)] });
-    setIsBadgeOpen(true);
+    // addBadge({ id: placeId, name: '아무개', image: BADGE_IMAGES[Math.floor(Math.random() * BADGE_IMAGES.length)] });
+    // setIsBadgeOpen(true);
     // save 데이터 저장
   };
 
