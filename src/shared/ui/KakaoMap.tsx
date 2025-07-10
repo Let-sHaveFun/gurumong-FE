@@ -75,6 +75,18 @@ export const KakaoMap = () => {
         onCreate={(map) => {
           mapRef.current = map;
         }}
+        onCenterChanged={() => {
+          if (mapRef.current && location) {
+            const center = mapRef.current.getCenter();
+            const dx = center.getLat() - location.lat;
+            const dy = center.getLng() - location.lng;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance > 0.0005) {
+              setActiveButton((prev) => (prev === 'explore' ? null : prev));
+            }
+          }
+        }}
       >
         <MapMarker
           position={location}
