@@ -4,6 +4,7 @@ import { HomePage } from '@/pages/home/ui/HomePage';
 import { TempPage } from '@/pages/temp';
 import { MobileLayout } from '@/shared/ui';
 import { QRPage } from './qr/ui/QRPage';
+import { PlaceDetailPage } from './place-detail';
 import { StoryFragmentPage } from './story-fragment/ui/StoryFragmentPage';
 import { MyPage } from './mypage/ui/MyPage';
 
@@ -23,14 +24,6 @@ const router = createBrowserRouter([
       {
         path: 'search',
         element: <h1>Search Page</h1>,
-      },
-      {
-        path: 'story-fragments',
-        element: <StoryFragmentPage />,
-      },
-      {
-        path: 'mypage',
-        element: <MyPage />,
       },
       {
         path: 'temp',
