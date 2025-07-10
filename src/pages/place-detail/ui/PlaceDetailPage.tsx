@@ -69,7 +69,7 @@ export function PlaceDetailPage() {
           <img src="/place-image.gif" alt="" className="w-full h-full object-cover" />
         </section>
         <section
-          className="bg-contain bg-no-repeat bg-center h-[550px]"
+          className="bg-contain bg-no-repeat bg-center h-[550px] flex"
           style={{ backgroundImage: `url(${textBackground})` }}
         >
           <div className="overflow-y-auto h-[400px] mt-[120px] px-10">
