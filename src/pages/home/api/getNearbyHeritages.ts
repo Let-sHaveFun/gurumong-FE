@@ -11,8 +11,11 @@ export type Heritage = {
 
 // 서버에서 3km 반경 유적지를 가져오는 API
 export const getNearbyHeritages = async (lat: number, lng: number, radius: number = 3): Promise<Heritage[]> => {
-  // const response = await axios.get<Heritage[]>('/api/heritages', {
-  const response = await axios.get<Heritage[]>('https://api.example.com/heritages', {
+  // const response = await axios.get<Heritage[]>('https://api.example.com/heritages', {
+  //   params: { lat, lng, radius },
+  // });
+
+  const response = await axios.get<Heritage[]>('https://dormung.goorm.training/api/tour-spots/location', {
     params: { lat, lng, radius },
   });
 
