@@ -1,5 +1,6 @@
 import type { Heritage } from '@/mocks/mockHeritages';
 import { LocationIcon } from '@vapor-ui/icons';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   results: Heritage[];
@@ -7,6 +8,8 @@ type Props = {
 };
 
 export function SearchResultList({ results, onSelect }: Props) {
+  const navigate = useNavigate();
+
   if (!results.length) return null;
 
   return (
@@ -14,7 +17,10 @@ export function SearchResultList({ results, onSelect }: Props) {
       {results.map((heritage) => (
         <li
           key={heritage.id}
-          onClick={() => onSelect(heritage)}
+          onClick={() => {
+            onSelect(heritage);
+            navigate(`/search?query=${encodeURIComponent(heritage.name)}&id=${heritage.id}`);
+          }}
           className="flex items-start gap-4 p-4 hover:bg-gray-50 cursor-pointer"
         >
           <div className="flex flex-col items-center">

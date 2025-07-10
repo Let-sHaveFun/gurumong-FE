@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import type { Heritage } from '@/mocks/mockHeritages';
 import { searchHeritages } from '@/mocks/searchHeritages';
 import { SearchResultList } from './SearchResultList';
+import { useSearchParams } from 'react-router-dom';
+import { ResultMap } from '@/shared/ui/ResultMap';
 
 const LOCAL_KEY = 'recent_keywords';
 
@@ -24,6 +26,10 @@ const SearchPage = () => {
   const [recentKeywords, setRecentKeywords] = useState<string[]>([]);
   const [results, setResults] = useState<Heritage[]>([]);
 
+  const [params] = useSearchParams();
+  const id = params.get('id');
+  const query = params.get('query') ?? '';
+
   useEffect(() => {
     const stored = loadFromLocalStorage();
     setRecentKeywords(stored);
@@ -42,6 +48,10 @@ const SearchPage = () => {
 
     return () => clearTimeout(timeout);
   }, [keyword]);
+
+  if (query && id) {
+    return <ResultMap query={query} id={id} />;
+  }
 
   const handleKeywordSubmit = (newKeyword: string) => {
     if (!newKeyword.trim()) return;
