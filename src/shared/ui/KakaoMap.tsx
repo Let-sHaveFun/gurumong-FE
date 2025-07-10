@@ -15,6 +15,7 @@ export const KakaoMap = () => {
   const [selectedHeritage, setSelectedHeritage] = useState<Heritage | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeButton, setActiveButton] = useState<'list' | 'bookmark' | 'explore' | null>(null);
+  const [activeHeritageId, setActiveHeritageId] = useState<string | null>(null);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -25,8 +26,11 @@ export const KakaoMap = () => {
           setLocation(userLocation);
 
           try {
-            const heritages = await getNearbyHeritages(latitude, longitude); // ✅ 목데이터 호출
+            const heritages = await getNearbyHeritages(latitude, longitude);
             setHeritages(heritages);
+            if (heritages.length > 0) {
+              setActiveHeritageId(heritages[0].id);
+            }
           } catch (error) {
             console.error('유적지 정보를 불러오는 데 실패했습니다:', error);
           }
@@ -39,8 +43,6 @@ export const KakaoMap = () => {
       console.error('Geolocation을 지원하지 않는 브라우저입니다.');
     }
   }, []);
-
-  const closestHeritage = heritages.length > 0 ? heritages[0] : null;
 
   if (!location) return <p>내 위치를 불러오는 중...</p>;
 
@@ -97,12 +99,19 @@ export const KakaoMap = () => {
 
           <DrawerContent className="max-w-[393px] h-[350px] mx-auto rounded-[8px] border-none p-0">
             <DrawerHeader className="text-center mt-4 p-0">
-              {selectedHeritage ? (
-                <SpotCard
-                  title={selectedHeritage.name}
-                  address={selectedHeritage.address}
-                  distance={selectedHeritage.distance}
-                />
+              {heritages.length > 0 ? (
+                <div className="h-full max-h-[300px] overflow-y-auto">
+                  {heritages.map((heritage) => (
+                    <SpotCard
+                      key={heritage.id}
+                      title={heritage.name}
+                      address={heritage.address}
+                      distance={heritage.distance}
+                      isActive={heritage.id === activeHeritageId}
+                      onClick={() => setActiveHeritageId(heritage.id)}
+                    />
+                  ))}
+                </div>
               ) : (
                 <DrawerTitle className="text-gray-500 text-sm">내 주위에 둘러볼 이야기조각이 없어요!</DrawerTitle>
               )}

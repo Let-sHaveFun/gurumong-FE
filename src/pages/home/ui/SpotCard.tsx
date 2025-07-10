@@ -11,13 +11,14 @@ interface SpotCard {
   onClick?: () => void;
 }
 
-export const SpotCard = ({ imageUrl, title, address, distance, isActive = true, onClick }: SpotCard) => {
+export const SpotCard = ({ imageUrl, title, address, distance, isActive = false, onClick }: SpotCard) => {
   return (
     <div
       className={cn(
-        'w-full border-gray-400 transition-colors px-[16px] py-[17px]',
+        'w-full border-gray-400 transition-colors px-[16px] py-[17px] cursor-pointer',
         isActive ? 'bg-gray-50' : 'bg-white',
       )}
+      onClick={onClick}
     >
       <div className="flex gap-4">
         <div
@@ -46,7 +47,7 @@ export const SpotCard = ({ imageUrl, title, address, distance, isActive = true, 
             <BookmarkOutlineIcon size={16} color="var(--vapor-color-gray-400)" className="cursor-pointer" />
           </div>
           {isActive && (
-            <Button className="w-full" size="md" onClick={onClick}>
+            <Button className="w-full" size="md">
               <SoundOnIcon size={16} />
               이야기조각 들으러 가기
             </Button>
