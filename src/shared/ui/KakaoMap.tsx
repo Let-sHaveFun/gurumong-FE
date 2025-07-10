@@ -8,6 +8,7 @@ import { getNearbyHeritages, type Heritage } from '@/pages/home/api/getNearbyHer
 import { SpotCard } from '@/pages/home/ui/SpotCard';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { SearchBar } from '@/shared/ui/SearchBar';
+import { NoResult } from '@/shared/ui/NoResult';
 
 type Location = { lat: number; lng: number };
 
@@ -143,7 +144,7 @@ export const KakaoMap = () => {
                   ))}
                 </div>
               ) : (
-                <DrawerTitle className="text-gray-500 text-sm">내 주위에 둘러볼 이야기조각이 없어요!</DrawerTitle>
+                <NoResult />
               )}
             </DrawerHeader>
           </DrawerContent>

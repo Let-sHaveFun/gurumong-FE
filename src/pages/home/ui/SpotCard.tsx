@@ -1,8 +1,10 @@
 import { cn } from '@/lib/utils';
 import { Button, Text } from '@vapor-ui/core';
 import { BookmarkOutlineIcon, SoundOnIcon } from '@vapor-ui/icons';
+import { useNavigate } from 'react-router-dom';
 
 interface SpotCard {
+  id?: string;
   imageUrl?: string;
   title: string;
   address: string;
@@ -11,7 +13,9 @@ interface SpotCard {
   onClick?: () => void;
 }
 
-export const SpotCard = ({ imageUrl, title, address, distance, isActive = false, onClick }: SpotCard) => {
+export const SpotCard = ({ id, imageUrl, title, address, distance, isActive = false, onClick }: SpotCard) => {
+  const navigate = useNavigate();
+
   return (
     <div
       className={cn(
@@ -47,7 +51,7 @@ export const SpotCard = ({ imageUrl, title, address, distance, isActive = false,
             <BookmarkOutlineIcon size={16} color="var(--vapor-color-gray-400)" className="cursor-pointer" />
           </div>
           {isActive && (
-            <Button className="w-full" size="md">
+            <Button className="w-full" size="md" onClick={() => navigate(`/place/${id}`)}>
               <SoundOnIcon size={16} />
               이야기조각 들으러 가기
             </Button>
