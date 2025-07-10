@@ -15,8 +15,12 @@ export const getNearbyHeritages = async (lat: number, lng: number, radius: numbe
   //   params: { lat, lng, radius },
   // });
 
+  // latitude (required): 위도 (BigDecimal)
+  // longitude (required): 경도 (BigDecimal)
+  // radius (optional): 반경(km), 기본값 10, 최대 10
+
   const response = await axios.get<Heritage[]>('https://dormung.goorm.training/api/tour-spots/location', {
-    params: { lat, lng, radius },
+    params: { latitude: lat, longitude: lng, radius },
   });
 
   return response.data;
