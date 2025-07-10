@@ -73,7 +73,7 @@ export function PlaceDetailPage() {
 
   return (
     <Box className="bg-[#558CF5] h-screen">
-      <Flex gap="$100" flexDirection="column" padding="$000" className="h-full">
+      <Flex gap="$100" flexDirection="column" padding="$000" className="flex flex-col h-full">
         <header className="px-4 py-3 shrink-0">
           <Flex gap="$100" alignItems="center" justifyContent="center" className="flex">
             <BackPageOutlineIcon width={24} height={24} className="text-white" onClick={() => navigate('/')} />
