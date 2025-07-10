@@ -17,7 +17,7 @@ export const KakaoMap = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeButton, setActiveButton] = useState<'list' | 'bookmark' | 'explore' | null>(null);
   const [activeHeritageId, setActiveHeritageId] = useState<string | null>(null);
-  const [center, setCenter] = useState<Location | null>(null);
+  const [_center, setCenter] = useState<Location | null>(null);
 
   const mapRef = useRef<kakao.maps.Map | null>(null);
 
@@ -105,7 +105,7 @@ export const KakaoMap = () => {
           isDrawerOpen ? 'bottom-[300px]' : 'bottom-[40px]',
         )}
       >
-        <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+        <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen} snapPoints={[0.4, 1]}>
           <DrawerTrigger asChild>
             <IconButton
               onClick={() => {
@@ -120,13 +120,13 @@ export const KakaoMap = () => {
             </IconButton>
           </DrawerTrigger>
 
-          <DrawerContent className="max-w-[393px] h-[350px] mx-auto rounded-[8px] border-none p-0">
+          <DrawerContent className="max-w-[393px] h-full max-h-screen mx-auto rounded-[8px] border-none p-0">
             <VisuallyHidden>
               <DrawerTitle>관광지 목록</DrawerTitle>
             </VisuallyHidden>
             <DrawerHeader className="text-center mt-4 p-0">
               {heritages.length > 0 ? (
-                <div className="h-full max-h-[300px] overflow-y-auto">
+                <div className="h-full min-h-[300px] overflow-y-auto">
                   {heritages.map((heritage) => (
                     <SpotCard
                       key={heritage.id}
@@ -163,6 +163,7 @@ export const KakaoMap = () => {
           <ExploreIcon
             size={24}
             color={activeButton === 'explore' ? 'var(--vapor-color-blue-400)' : 'var(--vapor-color-gray-400)'}
+            className="z-1"
           />
         </IconButton>
       </div>
