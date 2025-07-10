@@ -1,13 +1,13 @@
 import { Box, Button, Dialog } from '@vapor-ui/core';
 import { useState } from 'react';
 import { DrawerTest } from './DrawerTest';
-// import { QRScanner } from '@/shared/ui/QRScanner';
+import { KakaoMap } from '@/shared/ui';
 
 export function HomePage() {
   const [count, setCount] = useState(0);
 
   return (
-    <Box>
+    <Box className="h-full">
       <h1 className="text-2xl font-bold">Home</h1>
       <Button onClick={() => setCount(count + 1)}>Click me {count}</Button>
 
@@ -33,8 +33,8 @@ export function HomePage() {
           </Dialog.Footer>
         </Dialog.CombinedContent>
       </Dialog.Root>
-
       <DrawerTest />
+      <KakaoMap />
     </Box>
   );
 }
