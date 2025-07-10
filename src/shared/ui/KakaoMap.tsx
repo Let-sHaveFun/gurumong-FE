@@ -4,7 +4,7 @@ import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from 
 import { cn } from '@/lib/utils';
 import { BulletlistOutlineIcon, BookmarkIcon, ExploreIcon } from '@vapor-ui/icons';
 import IconButton from '@/pages/home/ui/IconButton';
-import { getNearbyHeritages, type Heritage } from '@/pages/home/api/getNearbyHeritages.mock';
+import { getNearbyHeritages, type Heritage } from '@/pages/home/api/getNearbyHeritages';
 import { SpotCard } from '@/pages/home/ui/SpotCard';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { SearchBar } from '@/shared/ui/SearchBar';
@@ -15,7 +15,7 @@ type Location = { lat: number; lng: number };
 
 export const KakaoMap = () => {
   const [location, setLocation] = useState<Location | null>(null);
-  const [heritages, setHeritages] = useState<Heritage[]>([]);
+  const [heritages, setHeritages] = useState<any[]>([]);
   const [_selectedHeritage, setSelectedHeritage] = useState<Heritage | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeButton, setActiveButton] = useState<'list' | 'bookmark' | 'explore' | null>(null);
@@ -23,6 +23,15 @@ export const KakaoMap = () => {
   const [_center, setCenter] = useState<Location | null>(null);
 
   const mapRef = useRef<kakao.maps.Map | null>(null);
+
+  // useEffect(() => {
+  //   fetch('https://api.example.com/heritages')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setHeritages(data);
+  //       console.log(data);
+  //     });
+  // }, []);
 
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -39,6 +48,7 @@ export const KakaoMap = () => {
 
         try {
           const heritages = await getNearbyHeritages(latitude, longitude);
+          console.log('gyu', heritages);
           setHeritages(heritages);
           if (heritages.length > 0) {
             setActiveHeritageId(heritages[0].id);
@@ -161,8 +171,8 @@ export const KakaoMap = () => {
                 <div className="h-full min-h-[300px] overflow-y-auto">
                   {heritages.map((heritage) => (
                     <SpotCard
-                      key={heritage.id}
-                      id={heritage.id}
+                      key={heritage['external_id']}
+                      id={heritage['external_id']}
                       title={heritage.name}
                       address={heritage.address}
                       distance={heritage.distance}

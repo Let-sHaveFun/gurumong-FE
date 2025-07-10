@@ -67,14 +67,16 @@ export function PlaceDetailPage() {
             </Text>
           </Flex>
         </header>
+
         <section className="h-[200px] my-12">
           <img src="/place-image.gif" alt="" className="w-full h-full object-cover" />
         </section>
+
         <section
           className="bg-contain bg-no-repeat bg-center h-[550px] flex"
-          style={{ backgroundImage: `url(${textBackground})` }}
+          style={{ backgroundImage: `url(${textBackground})`, height: '100%', backgroundSize: 'cover' }}
         >
-          <div className="overflow-y-auto h-[400px] mt-[120px] px-10">
+          <div className="overflow-y-auto mt-[120px] px-10 max-h-[80%]">
             <div className="overflow-y-auto mb-[100px]">
               <Text typography="body2" className={cn(typography.body2, 'whitespace-pre-line')}>
                 {legendText}
