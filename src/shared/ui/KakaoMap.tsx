@@ -135,6 +135,7 @@ export const KakaoMap = () => {
                   {heritages.map((heritage) => (
                     <SpotCard
                       key={heritage.id}
+                      id={heritage.id}
                       title={heritage.name}
                       address={heritage.address}
                       distance={heritage.distance}
