@@ -8,7 +8,7 @@ export type Heritage = {
 };
 
 // ✅ 제주 서귀포시 성산읍 동류암로 20 근처 유적지 mock 데이터 반환
-export const getNearbyHeritages = async (lat: number, lng: number): Promise<Heritage[]> => {
+export const getNearbyHeritages = async (_lat: number, _lng: number): Promise<Heritage[]> => {
   const mockData: Heritage[] = [
     {
       id: '1',

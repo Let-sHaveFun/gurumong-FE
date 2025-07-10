@@ -12,7 +12,7 @@ type Location = { lat: number; lng: number };
 export const KakaoMap = () => {
   const [location, setLocation] = useState<Location | null>(null);
   const [heritages, setHeritages] = useState<Heritage[]>([]);
-  const [selectedHeritage, setSelectedHeritage] = useState<Heritage | null>(null);
+  const [_selectedHeritage, setSelectedHeritage] = useState<Heritage | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeButton, setActiveButton] = useState<'list' | 'bookmark' | 'explore' | null>(null);
   const [activeHeritageId, setActiveHeritageId] = useState<string | null>(null);
