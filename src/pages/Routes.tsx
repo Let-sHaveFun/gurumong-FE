@@ -30,6 +30,14 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: 'story-fragments',
+    element: (
+      <MobileLayoutWithoutNav>
+        <StoryFragmentPage />
+      </MobileLayoutWithoutNav>
+    ),
+  },
+  {
     path: '/',
     element: (
       <FirstVisitCheckProvider>
@@ -52,10 +60,6 @@ const router = createBrowserRouter([
       {
         path: 'search',
         element: <h1>Search Page</h1>,
-      },
-      {
-        path: 'story-fragments',
-        element: <StoryFragmentPage />,
       },
       {
         path: 'mypage',
