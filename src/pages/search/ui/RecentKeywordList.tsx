@@ -10,7 +10,7 @@ export function RecentKeywordList({ keywords, onRemove, onClick }: Props) {
   if (keywords.length === 0) return null;
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 pb-[20px]">
       {keywords.map((kw) => (
         <KeywordBadge key={kw} keyword={kw} onRemove={() => onRemove(kw)} onClick={() => onClick(kw)} />
       ))}

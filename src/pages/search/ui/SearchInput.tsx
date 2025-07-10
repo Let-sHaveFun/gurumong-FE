@@ -31,7 +31,7 @@ export function SearchInput({ value, onChange, onSubmit }: Props) {
           className="w-full rounded-[8px] bg-white px-[16px] py-[12px] pl-[32px] shadow text-sm "
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              onSubmit?.(value); // 🔹 엔터 누르면 제출
+              onSubmit?.(value);
             }
           }}
         />

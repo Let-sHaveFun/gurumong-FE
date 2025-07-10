@@ -1,6 +1,9 @@
 import { RecentKeywordList } from './RecentKeywordList';
 import { SearchInput } from './SearchInput';
 import { useState, useEffect } from 'react';
+import type { Heritage } from '@/mocks/mockHeritages';
+import { searchHeritages } from '@/mocks/searchHeritages';
+import { SearchResultList } from './SearchResultList';
 
 const LOCAL_KEY = 'recent_keywords';
 
@@ -19,11 +22,26 @@ const loadFromLocalStorage = (): string[] => {
 const SearchPage = () => {
   const [keyword, setKeyword] = useState('');
   const [recentKeywords, setRecentKeywords] = useState<string[]>([]);
+  const [results, setResults] = useState<Heritage[]>([]);
 
   useEffect(() => {
     const stored = loadFromLocalStorage();
     setRecentKeywords(stored);
   }, []);
+
+  useEffect(() => {
+    if (!keyword.trim()) {
+      setResults([]);
+      return;
+    }
+
+    const timeout = setTimeout(async () => {
+      const data = await searchHeritages(keyword);
+      setResults(data);
+    }, 300);
+
+    return () => clearTimeout(timeout);
+  }, [keyword]);
 
   const handleKeywordSubmit = (newKeyword: string) => {
     if (!newKeyword.trim()) return;
@@ -56,6 +74,12 @@ const SearchPage = () => {
           }}
         />
       </div>
+      <SearchResultList
+        results={results}
+        onSelect={(heritage) => {
+          handleKeywordSubmit(heritage.name);
+        }}
+      />
     </div>
   );
 };
