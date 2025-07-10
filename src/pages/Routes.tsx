@@ -30,6 +30,14 @@ const router = createBrowserRouter([
       </MobileLayoutWithoutNav>
     ),
   },
+  {
+    path: 'place/:placeId',
+    element: (
+      <MobileLayoutWithoutNav>
+        <PlaceDetailPage />
+      </MobileLayoutWithoutNav>
+    ),
+  },
   // {
   //   path: 'story-fragments',
   //   element: (
@@ -70,10 +78,7 @@ const router = createBrowserRouter([
         path: 'mypage',
         element: <MyPage />,
       },
-      {
-        path: 'place/:placeId',
-        element: <PlaceDetailPage />,
-      },
+
       {
         path: 'temp',
         element: <TempPage />,
