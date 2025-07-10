@@ -7,6 +7,7 @@ import { QRPage } from './qr/ui/QRPage';
 import { StoryFragmentPage } from './story-fragment/ui/StoryFragmentPage';
 import { MyPage } from './mypage/ui/MyPage';
 import { PlaceDetailPage } from './place-detail';
+import SearchPage from '@/pages/search/ui/SearchPage';
 import { SplashPage } from './SplashPage';
 import { MobileLayoutWithoutNav } from '@/shared/ui/MobileLayoutWithoutNav';
 import { OnboardingPage } from './Onboarding';
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'search',
-        element: <h1>Search Page</h1>,
+        element: <SearchPage />,
       },
       {
         path: 'mypage',

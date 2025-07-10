@@ -5,7 +5,6 @@ export function Nav() {
   const location = useLocation();
 
   const navItems = [
-    { to: '/qr', icon: LocationIcon, label: '카메라' },
     { to: '/', icon: LocationIcon, label: '지도' },
     { to: '/story-fragments', icon: ExamIcon, label: '이야기조각' },
     { to: '/mypage', icon: UserIcon, label: '마이페이지' },
