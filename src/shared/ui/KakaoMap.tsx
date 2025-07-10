@@ -48,7 +48,7 @@ export const KakaoMap = () => {
 
   return (
     <div className="relative w-full h-full">
-      <Map center={location} style={{ width: '100%', height: '100%' }} level={6}>
+      <Map center={location} style={{ width: '100%', height: '100%' }} level={8}>
         <MapMarker
           position={location}
           image={{
@@ -63,12 +63,13 @@ export const KakaoMap = () => {
             key={heritage.id}
             position={{ lat: heritage.lat, lng: heritage.lng }}
             onClick={() => {
+              setActiveHeritageId(heritage.id);
               setSelectedHeritage(heritage);
               setIsDrawerOpen(true);
               setActiveButton('list');
             }}
             image={{
-              src: '/spot-marker.svg',
+              src: heritage.id === activeHeritageId ? '/active-spot-marker.svg' : '/spot-marker.svg',
               size: { width: 32, height: 32 },
               options: { offset: { x: 16, y: 32 } },
             }}
