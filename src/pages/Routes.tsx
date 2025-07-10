@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import { HomePage } from '@/pages/home/ui/HomePage';
 import { TempPage } from '@/pages/temp';
 import { MobileLayout } from '@/shared/ui';
+import { QRPage } from './qr/ui/QRPage';
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: 'qr',
+        element: <QRPage />,
+      },
+      {
+        path: 'search',
+        element: <h1>Search Page</h1>,
       },
       {
         path: 'temp',
