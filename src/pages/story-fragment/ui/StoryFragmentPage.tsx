@@ -3,6 +3,7 @@ import { ExamIcon } from '@vapor-ui/icons';
 import { useDormungStore } from '@/shared/store';
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { cn, typography } from '@/shared/style';
 
 export const StoryFragmentPage = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export const StoryFragmentPage = () => {
         <header className="py-3 ">
           <Flex gap="$100" flexDirection="column" className="mt-8">
             <ExamIcon width={32} height={32} className="text-white" />
-            <Text typography="heading3" className="w-full  text-white whitespace-pre-line">
+            <Text typography="heading3" className={cn(typography.heading3, 'w-full text-white whitespace-pre-line')}>
               {'제주의 이야기조각을\n'} <span className="text-[#BCE57D]">{count}</span>개 모았어요
             </Text>
           </Flex>

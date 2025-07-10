@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { typography } from '@/shared/style';
 import { Button, Text } from '@vapor-ui/core';
 import { BookmarkOutlineIcon, SoundOnIcon } from '@vapor-ui/icons';
 import { useNavigate } from 'react-router-dom';
@@ -41,9 +42,13 @@ export const SpotCard = ({ id, imageUrl, title, address, distance, isActive = fa
         <div className="flex flex-col justify-between flex-1">
           <div className="flex-1 flex items-center justify-between">
             <div className="flex flex-col items-start">
-              <Text typography="body1">{title}</Text>
-              <Text typography="body3">{address}</Text>
-              <Text typography="body3" className="text-[#558CF5]">
+              <Text typography="body1" className={cn(typography.body1)}>
+                {title}
+              </Text>
+              <Text typography="body3" className={cn(typography.body3)}>
+                {address}
+              </Text>
+              <Text typography="body3" className={cn('text-[#558CF5]', typography.body3)}>
                 내 위치로부터 {distance}m
               </Text>
             </div>

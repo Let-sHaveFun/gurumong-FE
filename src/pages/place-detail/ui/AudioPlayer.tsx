@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import { IconButton, Text } from '@vapor-ui/core';
 import { PlayIcon, PauseIcon } from '@vapor-ui/icons';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
+import { cn, typography } from '@/shared/style';
 
 export function AudioPlayer({ onCompleteAudio }: { onCompleteAudio: () => void }) {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -86,12 +87,14 @@ export function AudioPlayer({ onCompleteAudio }: { onCompleteAudio: () => void }
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
-
+  //
+  // const audioUrl = 'https://collection.cloudinary.com/deggvyhsw/75da97ff00634d6a2746b3c79010f7aa';
   const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
     <div className="w-full z-20 relative ">
       <audio ref={audioRef} src="/sample.mp3" preload="auto" className="hidden" />
+      {/* <audio ref={audioRef} src={audioUrl} preload="auto" className="hidden" /> */}
 
       {/* 진행률 표시바 */}
       <div className="relative w-full h-[10px] bg-gray-200 translate-y-[7px] rounded-[16px]">
@@ -100,7 +103,9 @@ export function AudioPlayer({ onCompleteAudio }: { onCompleteAudio: () => void }
 
       <div className="w-full bg-white rounded-lg p-4 border rounded-tl-[8px] rounded-tr-[8px] rounded-br-[0px] rounded-bl-[0px] z-0 relative">
         <div className="flex items-center justify-center gap-4 relative">
-          <Text className="text-[#558CF5] absolute left-0 top-[0]">{formatTime(currentTime)}</Text>
+          <Text className={cn(typography.body2, 'text-[#558CF5] absolute left-0 top-[0]')}>
+            {formatTime(currentTime)}
+          </Text>
 
           {/* 재생/일시정지 버튼 */}
           <IconButton
@@ -121,7 +126,9 @@ export function AudioPlayer({ onCompleteAudio }: { onCompleteAudio: () => void }
             )}
           </IconButton>
 
-          <Text className="text-[#558CF5] absolute right-0 top-[0]">{formatTime(duration)}</Text>
+          <Text className={cn(typography.body2, 'text-[#558CF5] absolute right-0 top-[0]')}>
+            {formatTime(duration)}
+          </Text>
         </div>
       </div>
     </div>

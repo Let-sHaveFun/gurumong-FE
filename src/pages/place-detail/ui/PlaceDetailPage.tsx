@@ -8,6 +8,7 @@ import { FixedBottom } from '@/shared/ui';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useDormungStore } from '@/shared/store';
+import { cn, typography } from '@/shared/style';
 // import { BADGE_IMAGES } from '@/shared/constants/badge-images';
 
 const legendText = `옛날 옛적, 제주 하늘이랑 땅이 아직 다 만들어지멍 살아지던 시절에, 커다란 거인 하나 살았주게. 그 할망 이름이 설문대할망이라 했주. 
@@ -61,7 +62,7 @@ export function PlaceDetailPage() {
         <header className="px-4 py-3 ">
           <Flex gap="$100" alignItems="center" justifyContent="center" className="flex">
             <BackPageOutlineIcon width={24} height={24} className="text-white" onClick={() => navigate('/')} />
-            <Text typography="heading5" className="w-full text-center text-white">
+            <Text typography="heading5" className={cn(typography.heading5, 'w-full text-center text-white')}>
               성산일출봉
             </Text>
           </Flex>
@@ -75,7 +76,7 @@ export function PlaceDetailPage() {
         >
           <div className="overflow-y-auto h-[400px] mt-[120px] px-10">
             <div className="overflow-y-auto mb-[100px]">
-              <Text typography="body2" className="whitespace-pre-line">
+              <Text typography="body2" className={cn(typography.body2, 'whitespace-pre-line')}>
                 {legendText}
               </Text>
             </div>

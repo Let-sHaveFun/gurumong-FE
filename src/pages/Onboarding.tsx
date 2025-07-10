@@ -3,6 +3,7 @@ import Onboarding2 from '@/assets/onboarding2.png';
 import Onboarding3 from '@/assets/onboarding3.png';
 import { cn } from '@/lib/utils';
 import { useDormungStore } from '@/shared/store';
+import { typography } from '@/shared/style';
 import { FixedBottom } from '@/shared/ui';
 import { Button, Flex, Text } from '@vapor-ui/core';
 import { BackPageOutlineIcon } from '@vapor-ui/icons';
@@ -61,7 +62,14 @@ export function OnboardingPage() {
         <img src={Onboarding3} alt="Onboarding3" className="absolute inset-0 h-full w-full object-cover" />
       )}
 
-      <Text typography="heading3" className="z-[1] text-white text-center relative whitespace-pre-line">
+      <Text
+        typography="heading3"
+        className={cn(
+          'z-[1] text-white text-center relative whitespace-pre-line',
+          typography.heading3,
+          currentStep === 1 && 'text-[24px] leading-[36px] tracking-[-0.3] font-bold font-weight-[700]',
+        )}
+      >
         {ONBOARDING_LIST[currentStep - 1]}
       </Text>
 
