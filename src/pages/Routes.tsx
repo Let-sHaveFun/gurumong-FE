@@ -6,6 +6,7 @@ import { MobileLayout } from '@/shared/ui';
 import { QRPage } from './qr/ui/QRPage';
 import { StoryFragmentPage } from './story-fragment/ui/StoryFragmentPage';
 import { MyPage } from './mypage/ui/MyPage';
+import { PlaceDetailPage } from './place-detail';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: 'mypage',
         element: <MyPage />,
+      },
+      {
+        path: 'place/:placeId',
+        element: <PlaceDetailPage />,
       },
       {
         path: 'temp',

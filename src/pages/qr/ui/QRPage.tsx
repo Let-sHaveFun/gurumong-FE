@@ -18,8 +18,10 @@ export function QRPage() {
     console.log('스캔된 QR 코드:', result);
 
     // URL인 경우 새 탭에서 열기
+
     if (result.startsWith('http')) {
-      window.open(result, '_blank');
+      navigate(result);
+      // window.open(result, '_blank');
     }
   };
 
