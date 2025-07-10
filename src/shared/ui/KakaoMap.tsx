@@ -70,8 +70,8 @@ export const KakaoMap = () => {
             }}
             image={{
               src: heritage.id === activeHeritageId ? '/active-spot-marker.svg' : '/spot-marker.svg',
-              size: { width: 32, height: 32 },
-              options: { offset: { x: 16, y: 32 } },
+              size: heritage.id === activeHeritageId ? { width: 40, height: 40 } : { width: 32, height: 32 },
+              options: heritage.id === activeHeritageId ? { x: 20, y: 40 } : { x: 16, y: 32 },
             }}
           />
         ))}
