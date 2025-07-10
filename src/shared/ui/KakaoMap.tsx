@@ -6,6 +6,7 @@ import { BulletlistOutlineIcon, BookmarkIcon, ExploreIcon } from '@vapor-ui/icon
 import IconButton from '@/pages/home/ui/IconButton';
 import { getNearbyHeritages, type Heritage } from '@/pages/home/api/getNearbyHeritages.mock';
 import { SpotCard } from '@/pages/home/ui/SpotCard';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 type Location = { lat: number; lng: number };
 
@@ -120,6 +121,9 @@ export const KakaoMap = () => {
           </DrawerTrigger>
 
           <DrawerContent className="max-w-[393px] h-[350px] mx-auto rounded-[8px] border-none p-0">
+            <VisuallyHidden>
+              <DrawerTitle>관광지 목록</DrawerTitle>
+            </VisuallyHidden>
             <DrawerHeader className="text-center mt-4 p-0">
               {heritages.length > 0 ? (
                 <div className="h-full max-h-[300px] overflow-y-auto">
