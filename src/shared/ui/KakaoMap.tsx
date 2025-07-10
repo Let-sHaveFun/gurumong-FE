@@ -64,7 +64,7 @@ export const KakaoMap = () => {
 
   return (
     <div className="relative w-full h-full">
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 w-[90%] max-w-[393px] px-4">
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 w-full max-w-[393px] px-4">
         <SearchBar />
       </div>
       <Map
