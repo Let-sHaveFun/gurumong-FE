@@ -8,7 +8,7 @@ import { FixedBottom } from '@/shared/ui';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useDormungStore } from '@/shared/store';
-import { BADGE_IMAGES } from '@/shared/constants/badge-images';
+// import { BADGE_IMAGES } from '@/shared/constants/badge-images';
 
 const legendText = `옛날 옛적, 제주 하늘이랑 땅이 아직 다 만들어지멍 살아지던 시절에, 커다란 거인 하나 살았주게. 그 할망 이름이 설문대할망이라 했주. 
 몸집이 어찌나 큰지, 발 한 번 딛으면 한라산에서 성산포까지 훌쩍 걸어댕길 수 있었주게.
@@ -45,20 +45,20 @@ export function PlaceDetailPage() {
     // 성산일출봉 추가 로직
     if (placeId === 'CONT_000000000500349') {
       addBadge({ id: placeId, name: '성산일출봉', image: '/story-fragment-4.png' });
+      setIsBadgeOpen(true);
       return;
     }
 
     // 다른 장소 추가 로직 (API 의 이름으로 할 예정)
-    addBadge({ id: placeId, name: '아무개', image: BADGE_IMAGES[Math.floor(Math.random() * BADGE_IMAGES.length)] });
-    setIsBadgeOpen(true);
-    // save 데이터 저장
+    // addBadge({ id: placeId, name: '아무개', image: BADGE_IMAGES[Math.floor(Math.random() * BADGE_IMAGES.length)] });
+    // setIsBadgeOpen(true);
   };
 
   return (
     <Box className="bg-[#558CF5]">
       <Flex gap="$100" flexDirection="column" padding="$000">
         <header className="px-4 py-3 ">
-          <Flex gap="$100" alignItems="center" justifyContent="center">
+          <Flex gap="$100" alignItems="center" justifyContent="center" className="flex">
             <BackPageOutlineIcon width={24} height={24} className="text-white" onClick={() => navigate('/')} />
             <Text typography="heading5" className="w-full text-center text-white">
               성산일출봉
@@ -68,8 +68,9 @@ export function PlaceDetailPage() {
         <section className="h-[200px] my-12">
           <img src="/place-image.gif" alt="" className="w-full h-full object-cover" />
         </section>
+
         <section
-          className="bg-contain bg-no-repeat bg-center h-[550px]"
+          className="bg-contain bg-no-repeat bg-center h-[550px] flex"
           style={{ backgroundImage: `url(${textBackground})` }}
         >
           <div className="overflow-y-auto h-[400px] mt-[120px] px-10">
@@ -86,7 +87,7 @@ export function PlaceDetailPage() {
 
         <Dialog.Root open={isBadgeOpen} onOpenChange={setIsBadgeOpen}>
           <Dialog.Overlay className="" />
-          <Dialog.CombinedContent className="w-[393px] h-full p-10 bg-transparent border-none">
+          <Dialog.CombinedContent className="w-[393px] h-full p-10 bg-transparent border-none justify-center gap-1">
             <Flex flexDirection="column" gap="$100">
               <img src={badgeImage} alt="badge" className="w-[300px] h-[300px] object-cover" />
               <Badge

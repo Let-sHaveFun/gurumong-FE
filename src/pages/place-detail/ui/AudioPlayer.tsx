@@ -86,12 +86,14 @@ export function AudioPlayer({ onCompleteAudio }: { onCompleteAudio: () => void }
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
-
+  //
+  const audioUrl = 'https://collection.cloudinary.com/deggvyhsw/75da97ff00634d6a2746b3c79010f7aa';
   const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
     <div className="w-full z-20 relative ">
-      <audio ref={audioRef} src="/sample.mp3" preload="auto" className="hidden" />
+      {/* <audio ref={audioRef} src="/sample.mp3" preload="auto" className="hidden" /> */}
+      <audio ref={audioRef} src={audioUrl} preload="auto" className="hidden" />
 
       {/* 진행률 표시바 */}
       <div className="relative w-full h-[10px] bg-gray-200 translate-y-[7px] rounded-[16px]">

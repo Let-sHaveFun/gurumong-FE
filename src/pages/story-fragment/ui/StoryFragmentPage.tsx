@@ -24,16 +24,16 @@ export const StoryFragmentPage = () => {
         </header>
       </Flex>
 
-      <Flex gap="$100" className="mt-8 flex-wrap" justifyContent="center">
+      <Flex gap="$100" className="mt-8 flex-wrap flex justify-center gap-2">
         {badges.map((badge, idx) => {
           return (
-            <Flex
+            <Box
               key={`${badge.id}-${idx}`}
               flexDirection="column"
               gap="$100"
               alignContent="center"
               justifyContent="center"
-              className="w-[110px] h-[116px] bg-[#FEF8E5]"
+              className="w-[110px] h-[116px] bg-[#FEF8E5] flex flex-col gap-1 justify-center"
               onClick={() => {
                 navigate(`/place/${badge.id}`);
               }}
@@ -44,7 +44,7 @@ export const StoryFragmentPage = () => {
                   {badge.name}
                 </span>
               </Badge>
-            </Flex>
+            </Box>
           );
         })}
 
