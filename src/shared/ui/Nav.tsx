@@ -11,7 +11,7 @@ export function Nav() {
   ];
 
   return (
-    <footer className="fixed bottom-0 w-full bg-white rounded-t-[8px] mx-auto max-w-[393px] px-[56px] pt-[12px] pb-[18px]">
+    <footer className="fixed bottom-0 w-full bg-white rounded-t-[8px] mx-auto max-w-[393px] px-[56px] pt-[12px] pb-[18px] z-10">
       <nav className="flex justify-between items-center bg-white">
         {navItems.map(({ to, icon: Icon, label }) => {
           const isActive = location.pathname === to;
