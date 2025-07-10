@@ -6,9 +6,10 @@ import badgeImage from '@/assets/badge.png'; // 경로에 맞게 수정해주세
 import { AudioPlayer } from './AudioPlayer';
 import { FixedBottom } from '@/shared/ui';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDormungStore } from '@/shared/store';
 import { cn, typography } from '@/shared/style';
+import { getHeritageById } from '@/mocks/getHeritageById';
 // import { BADGE_IMAGES } from '@/shared/constants/badge-images';
 
 const legendText = `옛날 옛적, 제주 하늘이랑 땅이 아직 다 만들어지멍 살아지던 시절에, 커다란 거인 하나 살았주게. 그 할망 이름이 설문대할망이라 했주. 
@@ -34,6 +35,18 @@ export function PlaceDetailPage() {
 
   const { badges, addBadge } = useDormungStore();
 
+  const [heritage, setHeritage] = useState<any | null>(null);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const found = await getHeritageById(placeId ?? '');
+      setHeritage(found);
+    };
+    fetch();
+  }, [placeId]);
+
+  console.log(heritage);
+
   const onCompleteAudio = () => {
     if (!placeId) return;
     if (badges.find((badge) => badge.id === placeId)) return;
@@ -56,6 +69,8 @@ export function PlaceDetailPage() {
     // save 데이터 저장
   };
 
+  const isExistAudio = !!heritage?.audioUrl;
+
   return (
     <Box className="bg-[#558CF5]">
       <Flex gap="$100" flexDirection="column" padding="$000">
@@ -63,7 +78,7 @@ export function PlaceDetailPage() {
           <Flex gap="$100" alignItems="center" justifyContent="center" className="flex">
             <BackPageOutlineIcon width={24} height={24} className="text-white" onClick={() => navigate('/')} />
             <Text typography="heading5" className={cn(typography.heading5, 'w-full text-center text-white')}>
-              성산일출봉
+              {heritage?.name}
             </Text>
           </Flex>
         </header>
@@ -78,15 +93,20 @@ export function PlaceDetailPage() {
         >
           <div className="overflow-y-auto mt-[120px] px-10 max-h-[80%]">
             <div className="overflow-y-auto mb-[100px]">
-              <Text typography="body2" className={cn(typography.body2, 'whitespace-pre-line')}>
-                {legendText}
+              <Text typography="body2" className={cn(typography.body2, 'whitespace-pre-line h-full')}>
+                {isExistAudio ? heritage?.scrpit : '서비스를 준비중입니다.'}
+                {/* TODO: 임시로 구현한 걸로 높이 맞추기 위해서 안보이는 글 추가  */}
+                {!isExistAudio && <div className="opacity-0">{legendText}</div>}
               </Text>
             </div>
           </div>
         </section>
-        <FixedBottom className="p-0">
-          <AudioPlayer onCompleteAudio={onCompleteAudio} />
-        </FixedBottom>
+
+        {isExistAudio && (
+          <FixedBottom className="p-0">
+            <AudioPlayer onCompleteAudio={onCompleteAudio} audioUrl={heritage?.audioUrl ?? ''} />
+          </FixedBottom>
+        )}
 
         <Dialog.Root open={isBadgeOpen} onOpenChange={setIsBadgeOpen}>
           <Dialog.Overlay className="" />

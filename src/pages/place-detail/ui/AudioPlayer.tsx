@@ -4,7 +4,7 @@ import { PlayIcon, PauseIcon } from '@vapor-ui/icons';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 import { cn, typography } from '@/shared/style';
 
-export function AudioPlayer({ onCompleteAudio }: { onCompleteAudio: () => void }) {
+export function AudioPlayer({ onCompleteAudio, audioUrl }: { onCompleteAudio: () => void; audioUrl: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -93,8 +93,8 @@ export function AudioPlayer({ onCompleteAudio }: { onCompleteAudio: () => void }
 
   return (
     <div className="w-full z-20 relative ">
-      <audio ref={audioRef} src="/sample.mp3" preload="auto" className="hidden" />
-      {/* <audio ref={audioRef} src={audioUrl} preload="auto" className="hidden" /> */}
+      {/* <audio ref={audioRef} src="/sample.mp3" preload="auto" className="hidden" /> */}
+      <audio ref={audioRef} src={audioUrl} preload="auto" className="hidden" />
 
       {/* 진행률 표시바 */}
       <div className="relative w-full h-[10px] bg-gray-200 translate-y-[7px] rounded-[16px]">
