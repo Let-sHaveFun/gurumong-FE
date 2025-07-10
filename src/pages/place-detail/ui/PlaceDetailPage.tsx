@@ -4,14 +4,17 @@ import textBackground from '@/assets/text-backgorund.png'; // 경로에 맞게 �
 
 import { AudioPlayer } from './AudioPlayer';
 import { FixedBottom } from '@/shared/ui';
+import { useNavigate } from 'react-router-dom';
 
 export function PlaceDetailPage() {
+  const navigate = useNavigate();
+
   return (
     <Box className="bg-[#558CF5]">
       <Flex gap="$100" flexDirection="column" padding="$000">
         <header className="px-4 py-3 ">
           <Flex gap="$100" alignItems="center" justifyContent="center">
-            <BackPageOutlineIcon width={24} height={24} className="text-white" />
+            <BackPageOutlineIcon width={24} height={24} className="text-white" onClick={() => navigate('/')} />
             <Text typography="heading5" className="w-full text-center text-white">
               성산일출봉
             </Text>
