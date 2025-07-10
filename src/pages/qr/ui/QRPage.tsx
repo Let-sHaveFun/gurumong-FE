@@ -46,7 +46,6 @@ export function QRPage() {
             onScan={handleQRScan}
             onClose={() => {
               setShowQRScanner(false);
-              navigate('/');
             }}
           />
         )}
