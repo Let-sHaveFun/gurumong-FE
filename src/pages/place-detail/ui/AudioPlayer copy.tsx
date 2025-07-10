@@ -1,5 +1,5 @@
 import { IconButton } from '@vapor-ui/core';
-import { PlayIcon, PauseIcon, FunctionIcon } from '@vapor-ui/icons';
+import { PlayIcon, PauseIcon } from '@vapor-ui/icons';
 import { useRef, useEffect, useState } from 'react';
 
 export function AudioPlayer() {
@@ -72,11 +72,11 @@ export function AudioPlayer() {
     }
   };
 
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  };
+  // const formatTime = (time: number) => {
+  //   const minutes = Math.floor(time / 60);
+  //   const seconds = Math.floor(time % 60);
+  //   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  // };
 
   const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
   return (
