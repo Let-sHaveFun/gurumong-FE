@@ -69,7 +69,7 @@ const SearchPage = () => {
 
   return (
     <div className="w-full h-full bg-gray-50">
-      <div className="flex flex-col gap-[12px] px-[16px] pt-[13px]">
+      <div className="flex flex-col gap-[12px] px-[16px] pt-[16px]">
         <SearchInput value={keyword} onChange={handleChange} onSubmit={handleKeywordSubmit} />
         <RecentKeywordList
           keywords={recentKeywords}
