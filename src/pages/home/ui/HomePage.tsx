@@ -7,7 +7,7 @@ export function HomePage() {
   const [count, setCount] = useState(0);
 
   return (
-    <Box className="h-full">
+    <Box className="h-screen">
       <h1 className="text-2xl font-bold">Home</h1>
       <Button onClick={() => setCount(count + 1)}>Click me {count}</Button>
 

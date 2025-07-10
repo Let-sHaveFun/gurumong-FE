@@ -26,7 +26,22 @@ export const KakaoMap = () => {
 
   return (
     <Map center={location} style={{ width: '100%', height: '100%' }} level={3}>
-      <MapMarker position={location} />
+      <MapMarker
+        position={location}
+        image={{
+          src: '/marker.png',
+          size: {
+            width: 30,
+            height: 30,
+          },
+          options: {
+            offset: {
+              x: 24,
+              y: 48,
+            },
+          },
+        }}
+      />
     </Map>
   );
 };
