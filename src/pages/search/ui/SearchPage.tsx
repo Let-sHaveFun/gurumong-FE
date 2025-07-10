@@ -57,11 +57,11 @@ const SearchPage = () => {
   const handleKeywordSubmit = async (newKeyword: string) => {
     if (!newKeyword.trim()) return;
 
-    // const filtered = recentKeywords.filter((k) => k !== newKeyword);
-    // const updated = [newKeyword, ...filtered].slice(0, 10);
+    const filtered = recentKeywords.filter((k) => k !== newKeyword);
+    const updated = [newKeyword, ...filtered].slice(0, 10);
 
-    // setRecentKeywords(updated);
-    // saveToLocalStorage(updated);
+    setRecentKeywords(updated);
+    saveToLocalStorage(updated);
   };
 
   const handleChange = async (value: string) => {
