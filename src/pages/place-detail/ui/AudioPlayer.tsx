@@ -1,9 +1,9 @@
 import { useRef, useEffect, useState } from 'react';
-import { IconButton } from '@vapor-ui/core';
+import { IconButton, Text } from '@vapor-ui/core';
 import { PlayIcon, PauseIcon } from '@vapor-ui/icons';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 
-export function AudioPlayer() {
+export function AudioPlayer({ onCompleteAudio }: { onCompleteAudio: () => void }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -31,6 +31,7 @@ export function AudioPlayer() {
       setCurrentTime(0);
       // 오디오 재생 위치를 처음으로 되돌림
       audio.currentTime = 0;
+      onCompleteAudio();
     };
 
     // 스킵 방지
@@ -80,25 +81,27 @@ export function AudioPlayer() {
   };
 
   //
-  // const formatTime = (time: number) => {
-  //   const minutes = Math.floor(time / 60);
-  //   const seconds = Math.floor(time % 60);
-  //   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  // };
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
 
   const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div>
+    <div className="w-full z-20 relative ">
       <audio ref={audioRef} src="/sample.mp3" preload="auto" className="hidden" />
 
       {/* 진행률 표시바 */}
-      <div className="relative w-full h-[10px] bg-gray-200 translate-y-[7px]  rounded-[16px] ">
+      <div className="relative w-full h-[10px] bg-gray-200 translate-y-[7px] rounded-[16px]">
         <ProgressBar progressPercentage={progressPercentage} className="absolute bottom-0 left-0 w-full h-full" />
       </div>
 
       <div className="w-full bg-white rounded-lg p-4 border rounded-tl-[8px] rounded-tr-[8px] rounded-br-[0px] rounded-bl-[0px] z-0 relative">
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4 relative">
+          <Text className="text-[#558CF5] absolute left-0 top-[0]">{formatTime(currentTime)}</Text>
+
           {/* 재생/일시정지 버튼 */}
           <IconButton
             aria-label="재생/일시정지"
@@ -117,6 +120,8 @@ export function AudioPlayer() {
               <PlayIcon width={24} height={24} />
             )}
           </IconButton>
+
+          <Text className="text-[#558CF5] absolute right-0 top-[0]">{formatTime(duration)}</Text>
         </div>
       </div>
     </div>
