@@ -3,7 +3,7 @@ import { IconButton, Text } from '@vapor-ui/core';
 import { PlayIcon, PauseIcon } from '@vapor-ui/icons';
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 
-export function AudioPlayer() {
+export function AudioPlayer({ onCompleteAudio }: { onCompleteAudio: () => void }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -31,6 +31,7 @@ export function AudioPlayer() {
       setCurrentTime(0);
       // 오디오 재생 위치를 처음으로 되돌림
       audio.currentTime = 0;
+      onCompleteAudio();
     };
 
     // 스킵 방지

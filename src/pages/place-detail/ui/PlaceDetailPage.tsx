@@ -1,10 +1,12 @@
-import { Box, Flex, Text } from '@vapor-ui/core';
+import { Badge, Box, Dialog, Flex, Text } from '@vapor-ui/core';
 import { BackPageOutlineIcon } from '@vapor-ui/icons';
 import textBackground from '@/assets/text-backgorund.png'; // 경로에 맞게 수정해주세요.
+import badgeImage from '@/assets/badge.png'; // 경로에 맞게 수정해주세요.
 
 import { AudioPlayer } from './AudioPlayer';
 import { FixedBottom } from '@/shared/ui';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const legendText = `옛날 옛적, 제주 하늘이랑 땅이 아직 다 만들어지멍 살아지던 시절에, 커다란 거인 하나 살았주게. 그 할망 이름이 설문대할망이라 했주. 
 몸집이 어찌나 큰지, 발 한 번 딛으면 한라산에서 성산포까지 훌쩍 걸어댕길 수 있었주게.
@@ -23,6 +25,12 @@ const legendText = `옛날 옛적, 제주 하늘이랑 땅이 아직 다 만들�
 
 export function PlaceDetailPage() {
   const navigate = useNavigate();
+  const [isBadgeOpen, setIsBadgeOpen] = useState(false);
+
+  const onCompleteAudio = () => {
+    setIsBadgeOpen(true);
+    // save 데이터 저장
+  };
 
   return (
     <Box className="bg-[#558CF5]">
@@ -35,11 +43,9 @@ export function PlaceDetailPage() {
             </Text>
           </Flex>
         </header>
-
         <section className="h-[200px] my-12">
           <img src="/place-image.gif" alt="" className="w-full h-full object-cover" />
         </section>
-
         <section
           className="bg-contain bg-no-repeat bg-center h-[550px]"
           style={{ backgroundImage: `url(${textBackground})` }}
@@ -52,10 +58,27 @@ export function PlaceDetailPage() {
             </div>
           </div>
         </section>
-
         <FixedBottom className="p-0">
-          <AudioPlayer />
+          <AudioPlayer onCompleteAudio={onCompleteAudio} />
         </FixedBottom>
+
+        <Dialog.Root open={isBadgeOpen} onOpenChange={setIsBadgeOpen}>
+          <Dialog.Overlay className="" />
+          <Dialog.CombinedContent className="w-[393px] h-full p-10 bg-transparent border-none">
+            <Flex flexDirection="column" gap="$100">
+              <img src={badgeImage} alt="badge" className="w-[300px] h-[300px] object-cover" />
+              <Badge
+                color="hint"
+                size="lg"
+                shape="pill"
+                className="bg-white flex justify-center"
+                onClick={() => setIsBadgeOpen(false)}
+              >
+                새로운 이야기조각을 받았어요!
+              </Badge>
+            </Flex>
+          </Dialog.CombinedContent>
+        </Dialog.Root>
       </Flex>
     </Box>
   );
