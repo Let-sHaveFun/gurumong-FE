@@ -8,15 +8,51 @@ import { StoryFragmentPage } from './story-fragment/ui/StoryFragmentPage';
 import { MyPage } from './mypage/ui/MyPage';
 import { PlaceDetailPage } from './place-detail';
 import SearchPage from '@/pages/search/ui/SearchPage';
+import { SplashPage } from './SplashPage';
+import { MobileLayoutWithoutNav } from '@/shared/ui/MobileLayoutWithoutNav';
+import { OnboardingPage } from './Onboarding';
+import { FirstVisitCheckProvider } from '@/shared/ui/FirstVisitCheckProvider';
 
 const router = createBrowserRouter([
   {
+    path: '/splash',
+    element: (
+      <MobileLayoutWithoutNav>
+        <SplashPage />
+      </MobileLayoutWithoutNav>
+    ),
+  },
+  {
+    path: '/onboarding',
+    element: (
+      <MobileLayoutWithoutNav>
+        <OnboardingPage />
+      </MobileLayoutWithoutNav>
+    ),
+  },
+  {
+    path: 'story-fragments',
+    element: (
+      <MobileLayoutWithoutNav>
+        <StoryFragmentPage />
+      </MobileLayoutWithoutNav>
+    ),
+  },
+  {
     path: '/',
-    element: <MobileLayout />,
+    element: (
+      <FirstVisitCheckProvider>
+        <MobileLayout />
+      </FirstVisitCheckProvider>
+    ),
     children: [
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: 'onboarding',
+        element: <SplashPage />,
       },
       {
         path: 'qr',
@@ -25,10 +61,6 @@ const router = createBrowserRouter([
       {
         path: 'search',
         element: <SearchPage />,
-      },
-      {
-        path: 'story-fragments',
-        element: <StoryFragmentPage />,
       },
       {
         path: 'mypage',
