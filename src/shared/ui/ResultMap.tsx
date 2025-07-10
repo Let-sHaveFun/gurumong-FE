@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from '@/shared/ui/drawer';
 import { SpotCard } from '@/pages/home/ui/SpotCard';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
-import { type Heritage } from '@/pages/home/api/getNearbyHeritages.mock';
 import { getHeritageById } from '@/mocks/getHeritageById';
 
 type Props = {
@@ -12,7 +11,7 @@ type Props = {
 };
 
 export const ResultMap = ({ query, id }: Props) => {
-  const [heritage, setHeritage] = useState<Heritage | null>(null);
+  const [heritage, setHeritage] = useState<any | null>(null);
 
   useEffect(() => {
     const fetch = async () => {
@@ -30,9 +29,13 @@ export const ResultMap = ({ query, id }: Props) => {
 
   return (
     <div className="relative w-full h-full">
-      <Map center={{ lat: heritage.lat, lng: heritage.lng }} style={{ width: '100%', height: '100%' }} level={8}>
+      <Map
+        center={{ lat: heritage.latitude, lng: heritage.longitude }}
+        style={{ width: '100%', height: '100%' }}
+        level={8}
+      >
         <MapMarker
-          position={{ lat: heritage.lat, lng: heritage.lng }}
+          position={{ lat: heritage.latitude, lng: heritage.longitude }}
           image={{
             src: '/active-spot-marker.svg',
             size: { width: 40, height: 40 },
@@ -50,7 +53,15 @@ export const ResultMap = ({ query, id }: Props) => {
             <DrawerHeader className="text-center mt-4 p-0">
               <div className="h-full min-h-[300px] overflow-y-auto">
                 <SpotCard
-                  key={heritage.id}
+                  // imageUrl={heritage['imgpath']}
+                  // key={heritage['external_id']}
+                  // title={heritage.name}
+                  // address={heritage.address}
+                  // distance={heritage.distance}
+                  // isActive
+                  imageUrl={heritage['imgpath']}
+                  key={heritage['external_id']}
+                  id={heritage['external_id']}
                   title={heritage.name}
                   address={heritage.address}
                   distance={heritage.distance}
