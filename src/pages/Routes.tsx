@@ -7,8 +7,27 @@ import { QRPage } from './qr/ui/QRPage';
 import { StoryFragmentPage } from './story-fragment/ui/StoryFragmentPage';
 import { MyPage } from './mypage/ui/MyPage';
 import { PlaceDetailPage } from './place-detail';
+import { SplashPage } from './SplashPage';
+import { MobileLayoutWithoutNav } from '@/shared/ui/MobileLayoutWithoutNav';
+import { OnboardingPage } from './Onboarding';
 
 const router = createBrowserRouter([
+  {
+    path: '/splash',
+    element: (
+      <MobileLayoutWithoutNav>
+        <SplashPage />
+      </MobileLayoutWithoutNav>
+    ),
+  },
+  {
+    path: '/onboarding',
+    element: (
+      <MobileLayoutWithoutNav>
+        <OnboardingPage />
+      </MobileLayoutWithoutNav>
+    ),
+  },
   {
     path: '/',
     element: <MobileLayout />,
@@ -16,6 +35,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: 'onboarding',
+        element: <SplashPage />,
       },
       {
         path: 'qr',
