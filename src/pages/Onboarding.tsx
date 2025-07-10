@@ -43,7 +43,7 @@ export function OnboardingPage() {
               onClick={() => setCurrentStep((prev) => prev - 1)}
             />
           )}
-          <ul className="flex gap-2">
+          <ul className="flex justify-center gap-2">
             <li className={cn('w-2 h-2 bg-white rounded-full z-[1]', currentStep === 1 && 'bg-[#FCD666]')} />
             <li className={cn('w-2 h-2 bg-white rounded-full z-[1]', currentStep === 2 && 'bg-[#FCD666]')} />
             <li className={cn('w-2 h-2 bg-white rounded-full z-[1]', currentStep === 3 && 'bg-[#FCD666]')} />
