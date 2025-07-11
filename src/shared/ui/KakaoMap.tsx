@@ -48,10 +48,11 @@ export const KakaoMap = () => {
 
         try {
           const heritages = await getNearbyHeritages(latitude, longitude);
-          console.log('gyu', heritages);
+
           setHeritages(heritages);
+
           if (heritages.length > 0) {
-            setActiveHeritageId(heritages[0].id);
+            setActiveHeritageId(heritages[0].externalId);
           }
         } catch (error) {
           console.error('유적지 정보를 불러오는 데 실패했습니다:', error);
@@ -180,8 +181,8 @@ export const KakaoMap = () => {
                       title={heritage.name}
                       address={heritage.address}
                       distance={heritage.distance}
-                      isActive={heritage.id === activeHeritageId}
-                      onClick={() => setActiveHeritageId(heritage.id)}
+                      isActive={heritage['externalId'] === activeHeritageId}
+                      onClick={() => setActiveHeritageId(heritage['externalId'])}
                     />
                   ))}
                 </div>

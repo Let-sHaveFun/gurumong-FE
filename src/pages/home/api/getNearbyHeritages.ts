@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export type Heritage = {
+  externalId: string;
   id: string;
   name: string;
   lat: number;
