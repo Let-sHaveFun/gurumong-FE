@@ -113,22 +113,21 @@ export const KakaoMap = () => {
           }}
         />
 
-        {heritages.map((heritage) => (
+        {heritages.slice(0, 5).map((heritage) => (
           <MapMarker
-            key={heritage['external_id']}
+            key={heritage['externalId']}
             position={{ lat: heritage.latitude, lng: heritage.longitude }}
             onClick={() => {
-              setActiveHeritageId(heritage['external_id']);
+              setActiveHeritageId(heritage['externalId']);
               setSelectedHeritage(heritage);
               setIsDrawerOpen(true);
               setActiveButton('list');
             }}
             image={{
-              src: heritage['external_id'] === activeHeritageId ? '/active-spot-marker.svg' : '/spot-marker.svg',
-              size:
-                heritage['external_id'] === activeHeritageId ? { width: 40, height: 40 } : { width: 32, height: 32 },
+              src: heritage['externalId'] === activeHeritageId ? '/active-spot-marker.svg' : '/spot-marker.svg',
+              size: heritage['externalId'] === activeHeritageId ? { width: 40, height: 40 } : { width: 32, height: 32 },
               options:
-                heritage['external_id'] === activeHeritageId
+                heritage['externalId'] === activeHeritageId
                   ? { offset: { x: 20, y: 40 } }
                   : { offset: { x: 16, y: 32 } },
             }}
@@ -173,11 +172,11 @@ export const KakaoMap = () => {
             <DrawerHeader className="text-center mt-4 p-0">
               {heritages.length > 0 ? (
                 <div className="h-full min-h-[300px] overflow-y-auto">
-                  {heritages.map((heritage) => (
+                  {heritages.slice(0, 5).map((heritage) => (
                     <SpotCard
-                      imageUrl={heritage['imgpath']}
-                      key={heritage['external_id']}
-                      id={heritage['external_id']}
+                      imageUrl={heritage['imgPath']}
+                      key={heritage['externalId']}
+                      id={heritage['externalId']}
                       title={heritage.name}
                       address={heritage.address}
                       distance={heritage.distance}

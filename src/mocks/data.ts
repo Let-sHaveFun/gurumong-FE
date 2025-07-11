@@ -1,6 +1,20 @@
+// const a = {
+//   externalId: 'CNTS_000000000022863',
+//   name: '터진목 & 성산면 4·3희생자 위령비',
+//   address: '제주특별자치도 서귀포시 성산읍 일출로 88-19',
+//   latitude: 33.450108,
+//   longitude: 126.922455,
+//   description: '터진목 & 성산면 4·3희생자 위령비은(는) 제주도의 아름다운 관광지입니다.',
+//   category: '관광지',
+//   tag: '4.3,문화유적지,문화관광,제주4.3,역사유적,어트랙션',
+//   introduction: '4.3사건 당시 성산, 구좌면 관내 주민들이 총살됐던 학살터.',
+//   imgPath: 'https://api.cdn.visitjeju.net/photomng/imgpath/202111/16/111901c8-8357-4190-92e8-8d5f5b64476a.jpeg',
+//   distance: 0.385972877868073,
+// };
+
 export const MOCK_DATA = [
   {
-    external_id: 'CNTS_200000000013791',
+    externalId: 'CNTS_200000000013791',
     name: '빛의 벙커',
     address: '제주특별자치도 서귀포시 성산읍 고성리  2039-22',
     latitude: 33.4398006,
@@ -14,7 +28,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000020982',
+    externalId: 'CNTS_000000000020982',
     name: '신양포구',
     address: '제주특별자치도 서귀포시 성산읍 고성리',
     latitude: 33.444576,
@@ -28,7 +42,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500401',
+    externalId: 'CONT_000000000500401',
     name: '신양해안도로',
     address: '제주특별자치도 서귀포시 성산읍 신고로',
     latitude: 33.431046,
@@ -42,7 +56,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500655',
+    externalId: 'CONT_000000000500655',
     name: '통오름',
     address: '제주특별자치도 서귀포시 성산읍 신산리 1754-1',
     latitude: 33.395042,
@@ -56,7 +70,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_300000000012647',
+    externalId: 'CNTS_300000000012647',
     name: '드르쿰다 제주 성산점',
     address: '제주특별자치도 서귀포시 성산읍 섭지코지로25번길 64',
     latitude: 33.4450874,
@@ -71,7 +85,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500135',
+    externalId: 'CONT_000000000500135',
     name: '대왕산 (왕뫼, 왕메, 왕미)',
     address: '제주특별자치도 서귀포시 성산읍 수산리 1429',
     latitude: 33.457447,
@@ -85,7 +99,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000022158',
+    externalId: 'CNTS_000000000022158',
     name: '휘닉스 제주 유민 아르누보 뮤지엄',
     address: '제주특별자치도 서귀포시 성산읍 섭지코지로 107',
     latitude: 33.4300919,
@@ -100,7 +114,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000018309',
+    externalId: 'CNTS_000000000018309',
     name: '제주베니스랜드',
     address: '제주특별자치도 서귀포시 성산읍 난산리 2575',
     latitude: 33.416195,
@@ -114,7 +128,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_300000000013063',
+    externalId: 'CNTS_300000000013063',
     name: '현애원',
     address: '제주특별자치도 서귀포시 성산읍 산성효자로114번길 131',
     latitude: 33.4559681,
@@ -128,7 +142,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500190',
+    externalId: 'CONT_000000000500190',
     name: '모구리오름',
     address: '제주특별자치도 서귀포시 성산읍 서성일로 260',
     latitude: 33.4059591,
@@ -142,7 +156,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000021028',
+    externalId: 'CNTS_000000000021028',
     name: '온평리 포구',
     address: '제주특별자치도 서귀포시 성산읍 온평리',
     latitude: 33.40161,
@@ -156,7 +170,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500369',
+    externalId: 'CONT_000000000500369',
     name: '소수산봉(족은물뫼)',
     address: '제주특별자치도 서귀포시 성산읍 고성리 887',
     latitude: 33.43848759,
@@ -170,7 +184,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500476',
+    externalId: 'CONT_000000000500476',
     name: '우도잠수함(제주씨월드)',
     address: '제주특별자치도 서귀포시 성산읍 성산등용로 130-21',
     latitude: 33.47211,
@@ -184,7 +198,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500343',
+    externalId: 'CONT_000000000500343',
     name: '섭지코지',
     address: '제주특별자치도 서귀포시 성산읍 섭지코지로 262',
     latitude: 33.4236948,
@@ -198,7 +212,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500514',
+    externalId: 'CONT_000000000500514',
     name: '일출랜드',
     address: '제주특별자치도 서귀포시 성산읍 중산간동로 4150-30',
     latitude: 33.3835243,
@@ -213,7 +227,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500497',
+    externalId: 'CONT_000000000500497',
     name: '유건에오름',
     address: '제주특별자치도 서귀포시 성산읍 난산리 2302',
     latitude: 33.413593,
@@ -227,7 +241,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000000978',
+    externalId: 'CNTS_000000000000978',
     name: '성산항',
     address: '제주특별자치도 서귀포시 성산읍 성산등용로 129-21',
     latitude: 33.4721117,
@@ -241,7 +255,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500145',
+    externalId: 'CONT_000000000500145',
     name: '독자봉',
     address: '제주특별자치도 서귀포시 성산읍 신산리 1785',
     latitude: 33.3877114,
@@ -255,7 +269,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000022173',
+    externalId: 'CNTS_000000000022173',
     name: '제주 더팔팔농장',
     address: '제주특별자치도 서귀포시 성산읍 독자봉로60번길 20',
     latitude: 33.38571,
@@ -269,7 +283,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_300000000012833',
+    externalId: 'CNTS_300000000012833',
     name: '그랜드스윙',
     address: '제주특별자치도 서귀포시 성산읍 섭지코지로 107',
     latitude: 33.4300919,
@@ -283,7 +297,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000018474',
+    externalId: 'CNTS_000000000018474',
     name: '제주올레 1코스',
     address: '제주특별자치도 서귀포시 성산읍 오조리 396-1',
     latitude: 33.47192,
@@ -297,7 +311,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000020987',
+    externalId: 'CNTS_000000000020987',
     name: '오조포구',
     address: '제주특별자치도 서귀포시 성산읍 오조리',
     latitude: 33.462772,
@@ -311,7 +325,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000000972',
+    externalId: 'CNTS_000000000000972',
     name: '김영갑갤러리 두모악',
     address: '제주특별자치도 서귀포시 성산읍 삼달로 137',
     latitude: 33.372063,
@@ -325,7 +339,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500400',
+    externalId: 'CONT_000000000500400',
     name: '신양섭지해수욕장',
     address: '제주특별자치도 서귀포시 성산읍 섭지코지로 88',
     latitude: 33.4351929,
@@ -339,7 +353,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000019654',
+    externalId: 'CNTS_000000000019654',
     name: '해품은체험농장',
     address: '제주특별자치도 서귀포시 성산읍 서성일로 1078-14',
     latitude: 33.443462,
@@ -353,7 +367,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000021511',
+    externalId: 'CNTS_000000000021511',
     name: '온평리 환해장성',
     address: '제주특별자치도 서귀포시 성산읍 환해장성로 732',
     latitude: 33.418377,
@@ -367,7 +381,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500263',
+    externalId: 'CONT_000000000500263',
     name: '붉은오름(성산읍)',
     address: '제주특별자치도 서귀포시 성산읍 섭지코지로 261',
     latitude: 33.42664477,
@@ -381,7 +395,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500565',
+    externalId: 'CONT_000000000500565',
     name: '아쿠아플라넷 제주',
     address: '제주특별자치도 서귀포시 성산읍 섭지코지로 95',
     latitude: 33.4325283,
@@ -395,7 +409,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500134',
+    externalId: 'CONT_000000000500134',
     name: '대수산봉(큰물뫼,물미오름)',
     address: '제주특별자치도 서귀포시 성산읍 고성리 2039-1',
     latitude: 33.43823384,
@@ -409,7 +423,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000018413',
+    externalId: 'CNTS_000000000018413',
     name: '광치기해변',
     address: '제주특별자치도 서귀포시 성산읍 섭지코지로 63',
     latitude: 33.45245276,
@@ -423,7 +437,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500162',
+    externalId: 'CONT_000000000500162',
     name: '두산봉(말미오름)',
     address: '제주특별자치도 서귀포시 성산읍 시흥리 산 1-5',
     latitude: 33.47950858,
@@ -437,7 +451,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500572',
+    externalId: 'CONT_000000000500572',
     name: '제주쥬티클럽',
     address: '제주특별자치도 서귀포시 성산읍 신양로 113',
     latitude: 33.4445754,
@@ -451,7 +465,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500422',
+    externalId: 'CONT_000000000500422',
     name: '알오름(성산읍)',
     address: '제주특별자치도 서귀포시 성산읍 시흥상동로',
     latitude: 33.476498,
@@ -465,7 +479,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500699',
+    externalId: 'CONT_000000000500699',
     name: '혼인지',
     address: '제주특별자치도 서귀포시 성산읍 혼인지로 39-22',
     latitude: 33.414932,
@@ -480,7 +494,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500207',
+    externalId: 'CONT_000000000500207',
     name: '미천굴',
     address: '제주특별자치도 서귀포시 성산읍 중산간동로 4150-30',
     latitude: 33.3835243,
@@ -494,7 +508,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000020231',
+    externalId: 'CNTS_000000000020231',
     name: '제주올레 2코스',
     address: '제주특별자치도 서귀포시 성산읍 고성리 2563-3',
     latitude: 33.43367,
@@ -508,7 +522,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000022377',
+    externalId: 'CNTS_000000000022377',
     name: '성산포항',
     address: '서귀포시 성산읍 성산등용로 130-21',
     latitude: 33.47211,
@@ -522,7 +536,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000020003',
+    externalId: 'CNTS_000000000020003',
     name: '제주커피박물관 바움 Baum',
     address: '제주특별자치도 서귀포시 성산읍 서성일로1168번길 89-17',
     latitude: 33.4398,
@@ -536,7 +550,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   // {
-  //   external_id: 'CONT_000000000500349',
+  //   externalId: 'CONT_000000000500349',
   //   name: '성산일출봉(UNESCO 세계자연유산)',
   //   address: '제주특별자치도 서귀포시 성산읍 일출로 284-12',
   //   latitude: 33.462147,
@@ -551,7 +565,7 @@ export const MOCK_DATA = [
   //   distance: 19,
   // },
   {
-    external_id: 'CNTS_000000000020985',
+    externalId: 'CNTS_000000000020985',
     name: '쇠와꽃 승마장',
     address: '제주특별자치도 서귀포시 성산읍 섭지코지로25번길 88-17',
     latitude: 33.44715,
@@ -565,7 +579,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000021620',
+    externalId: 'CNTS_000000000021620',
     name: '성산오조리해안',
     address: '제주특별자치도 거쉬포시 성산읍 한도로',
     latitude: 33.45794,
@@ -579,7 +593,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000007159',
+    externalId: 'CNTS_200000000007159',
     name: '신산신양해안도로 (해산물)',
     address: '제주특별자치도 서귀포시 성산읍 고성리',
     latitude: null,
@@ -593,7 +607,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000020983',
+    externalId: 'CNTS_000000000020983',
     name: '성산~세화 해안도로',
     address: '제주특별자치도 서귀포시 성산읍 해맞이해안로 2636',
     latitude: 33.475853,
@@ -607,7 +621,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000018483',
+    externalId: 'CNTS_000000000018483',
     name: '뒤굽은이오름',
     address: '제주특별자치도 서귀포시 성산읍 수산리 4504',
     latitude: 33.43110792,
@@ -621,7 +635,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000022805',
+    externalId: 'CNTS_000000000022805',
     name: '제주해양동물박물관',
     address: '제주특별자치도 서귀포시 성산읍 서성일로 689-21',
     latitude: 33.42965,
@@ -635,7 +649,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000020247',
+    externalId: 'CNTS_000000000020247',
     name: '협자연대',
     address: '제주특별자치도 서귀포시 성산읍 고성리 57-1',
     latitude: 33.426456,
@@ -649,7 +663,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000007520',
+    externalId: 'CNTS_200000000007520',
     name: '신천리 벽화마을',
     address: '제주특별자치도 서귀포시 성산읍 신천리',
     latitude: 33.3465229,
@@ -663,7 +677,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000021510',
+    externalId: 'CNTS_000000000021510',
     name: '신산환해장성',
     address: '제주특별자치도 서귀포시 성산읍 신산리',
     latitude: 33.38476,
@@ -677,7 +691,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000007278',
+    externalId: 'CNTS_200000000007278',
     name: '농개',
     address: '제주특별자치도 서귀포시 성산읍 환해장성로111번길 4',
     latitude: 33.38036669,
@@ -691,7 +705,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000009501',
+    externalId: 'CNTS_200000000009501',
     name: '궁대오름(궁대악)',
     address: '제주특별자치도 서귀포시 성산읍 금백조로 446',
     latitude: 33.4405616,
@@ -706,7 +720,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_000000000022863',
+    externalId: 'CNTS_000000000022863',
     name: '터진목 & 성산면 4·3희생자 위령비',
     address: '제주특별자치도 서귀포시 성산읍 일출로 88-19',
     latitude: 33.450108,
@@ -721,7 +735,7 @@ export const MOCK_DATA = [
     distance: 7,
   },
   {
-    external_id: 'CNTS_200000000007852',
+    externalId: 'CNTS_200000000007852',
     name: '제주인디',
     address: '제주특별자치도 서귀포시 성산읍 중산간동로 4150-30',
     latitude: 33.3833933,
@@ -735,7 +749,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000008693',
+    externalId: 'CNTS_200000000008693',
     name: '제주참숯가마찜질방',
     address: '제주특별자치도 서귀포시 성산읍 삼달로 47',
     latitude: 33.3822884,
@@ -749,7 +763,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000008091',
+    externalId: 'CNTS_200000000008091',
     name: '성산 유채꽃재배단지',
     address: '제주특별자치도 서귀포시 성산읍 일출로',
     latitude: 33.449998,
@@ -764,7 +778,7 @@ export const MOCK_DATA = [
     distance: 9,
   },
   {
-    external_id: 'CNTS_200000000008851',
+    externalId: 'CNTS_200000000008851',
     name: '아일랜드에프',
     address: '제주특별자치도 서귀포시 성산읍 성산등용로 112-7, 2층',
     latitude: 33.4721117,
@@ -778,7 +792,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000009497',
+    externalId: 'CNTS_200000000009497',
     name: '고흐의 정원',
     address: '제주특별자치도 서귀포시 성산읍 삼달신풍로 126-5',
     latitude: 33.3726076,
@@ -792,7 +806,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000010798',
+    externalId: 'CNTS_200000000010798',
     name: '휘닉스 르쏠레이테라피',
     address: '제주특별자치도 서귀포시 성산읍 섭지코지로 107 휘닉스제주아일랜드리조트 블루동 1층',
     latitude: 33.4306514,
@@ -807,7 +821,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000010373',
+    externalId: 'CNTS_200000000010373',
     name: '신풍리 밭담길',
     address: '제주특별자치도 서귀포시 성산읍 신풍하동로 39',
     latitude: 33.3618401,
@@ -822,7 +836,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000009893',
+    externalId: 'CNTS_200000000009893',
     name: '일출랜드 아트센터',
     address: '제주특별자치도 서귀포시 성산읍 중산간동로 4150-30',
     latitude: 33.3833933,
@@ -837,7 +851,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000010336',
+    externalId: 'CNTS_200000000010336',
     name: '취다선리조트',
     address: '제주특별자치도 서귀포시 성산읍 해맞이해안로 2688',
     latitude: 33.4718786,
@@ -851,7 +865,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000012094',
+    externalId: 'CNTS_200000000012094',
     name: '제주어울림감귤체험농장',
     address: '제주특별자치도 서귀포시 성산읍 서성일로 809',
     latitude: 33.4361372,
@@ -865,7 +879,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_300000000016090',
+    externalId: 'CNTS_300000000016090',
     name: '솔티 오렌지',
     address: '제주특별자치도 서귀포시 성산읍 신산중앙로 36',
     latitude: 33.3784681,
@@ -879,7 +893,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_200000000015189',
+    externalId: 'CNTS_200000000015189',
     name: '뷰 제주하늘',
     address: '제주특별자치도 서귀포시 성산읍 서성일로 397',
     latitude: 33.4131403,
@@ -893,7 +907,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_300000000015858',
+    externalId: 'CNTS_300000000015858',
     name: '블루버블',
     address: '제주특별자치도 서귀포시 성산읍 일출로255번길 11',
     latitude: 33.4622602,
@@ -907,7 +921,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_300000000015864',
+    externalId: 'CNTS_300000000015864',
     name: '성산스쿠버리조트',
     address: '제주특별자치도 서귀포시 성산읍 일출로 258-5',
     latitude: 33.4609616,
@@ -922,7 +936,7 @@ export const MOCK_DATA = [
     distance: 2,
   },
   {
-    external_id: 'CNTS_300000000015866',
+    externalId: 'CNTS_300000000015866',
     name: '아일랜드 플라워',
     address: '제주특별자치도 서귀포시 성산읍 서성일로 602',
     latitude: 33.4242279,
@@ -936,7 +950,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_300000000016084',
+    externalId: 'CNTS_300000000016084',
     name: '라이더스랩',
     address: '제주특별자치도 서귀포시 성산읍 중산간동로 4328-77 (삼달리) 라이더스랩',
     latitude: 33.3915592,
@@ -951,7 +965,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CNTS_300000000013441',
+    externalId: 'CNTS_300000000013441',
     name: '제주올레이바이크',
     address: '제주특별자치도 서귀포시 성산읍 성산등용로17번길 55 (성산리, 제주 성산 리치유 클래시아) 상가동97호',
     latitude: 33.4604576,
@@ -966,7 +980,7 @@ export const MOCK_DATA = [
     audioUrl: '',
   },
   {
-    external_id: 'CONT_000000000500019',
+    externalId: 'CONT_000000000500019',
     name: '감귤박물관',
     address: '제주특별자치도 서귀포시 효돈순환로 441',
     latitude: 33.271523,
@@ -983,7 +997,7 @@ export const MOCK_DATA = [
     // distance: 20,
   },
   {
-    external_id: 'CONT_000000000500685',
+    externalId: 'CONT_000000000500685',
     name: '한라산국립공원',
     address: '제주특별자치도 제주시 1100로 2070-61',
     latitude: 33.36132,
@@ -1001,7 +1015,7 @@ export const MOCK_DATA = [
     // distance: 18,
   },
   {
-    external_id: 'CONT_000000000500349',
+    externalId: 'CONT_000000000500349',
     name: '성산일출봉',
     address: '제주특별자치도 서귀포시 성산읍 일출로 284-12',
     latitude: 33.462147,
@@ -1018,7 +1032,7 @@ export const MOCK_DATA = [
     distance: 9,
   },
   {
-    external_id: 'CONT_000000000500150',
+    externalId: 'CONT_000000000500150',
     name: '북촌돌하르방미술관',
     address: '제주특별자치도 제주시 조천읍 북촌서1길 70',
     latitude: 33.5387743,
@@ -1034,4 +1048,4 @@ export const MOCK_DATA = [
       'https://res.cloudinary.com/deggvyhsw/video/upload/v1752177533/%E1%84%87%E1%85%AE%E1%86%A8%E1%84%8E%E1%85%A9%E1%86%AB%E1%84%83%E1%85%A9%E1%86%AF%E1%84%92%E1%85%A1%E1%84%85%E1%85%B3%E1%84%87%E1%85%A1%E1%86%BC%E1%84%86%E1%85%B5%E1%84%89%E1%85%AE%E1%86%AF%E1%84%80%E1%85%AA%E1%86%AB_akkpli.mp3',
     // distance: 19,
   },
-];
+].map((item) => ({ ...item, imgPath: item.imgpath }));
