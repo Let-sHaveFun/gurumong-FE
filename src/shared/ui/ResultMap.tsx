@@ -53,13 +53,13 @@ export const ResultMap = ({ query, id }: Props) => {
             <DrawerHeader className="text-center mt-4 p-0">
               <div className="h-full min-h-[300px] overflow-y-auto">
                 <SpotCard
-                  // imageUrl={heritage['ImagePath']}
+                  // imageUrl={heritage['imgPath']}
                   // key={heritage['externalId']}
                   // title={heritage.name}
                   // address={heritage.address}
                   // distance={heritage.distance}
                   // isActive
-                  imageUrl={heritage['ImagePath']}
+                  imageUrl={heritage['imgPath']}
                   key={heritage['externalId']}
                   id={heritage['externalId']}
                   title={heritage.name}

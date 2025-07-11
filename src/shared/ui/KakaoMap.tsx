@@ -174,7 +174,7 @@ export const KakaoMap = () => {
                 <div className="h-full min-h-[300px] overflow-y-auto">
                   {heritages.map((heritage) => (
                     <SpotCard
-                      imageUrl={heritage['ImagePath']}
+                      imageUrl={heritage['imgPath']}
                       key={heritage['externalId']}
                       id={heritage['externalId']}
                       title={heritage.name}
