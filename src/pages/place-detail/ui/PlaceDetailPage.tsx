@@ -41,11 +41,11 @@ export function PlaceDetailPage() {
 
   useEffect(() => {
     const fetch = async () => {
-      const found = await getHeritageById(placeId ?? '');
+      const found = await getHeritageById(placeId ?? '', location.lat, location.lng);
       setHeritage(found);
     };
     fetch();
-  }, [placeId]);
+  }, [placeId, location]);
 
   console.log(heritage);
 
