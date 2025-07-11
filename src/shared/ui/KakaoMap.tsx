@@ -113,7 +113,7 @@ export const KakaoMap = () => {
           }}
         />
 
-        {heritages.map((heritage) => (
+        {heritages.slice(0, 5).map((heritage) => (
           <MapMarker
             key={heritage['externalId']}
             position={{ lat: heritage.latitude, lng: heritage.longitude }}
@@ -172,7 +172,7 @@ export const KakaoMap = () => {
             <DrawerHeader className="text-center mt-4 p-0">
               {heritages.length > 0 ? (
                 <div className="h-full min-h-[300px] overflow-y-auto">
-                  {heritages.map((heritage) => (
+                  {heritages.slice(0, 5).map((heritage) => (
                     <SpotCard
                       imageUrl={heritage['imgPath']}
                       key={heritage['externalId']}
