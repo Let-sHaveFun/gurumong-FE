@@ -80,8 +80,8 @@ export const ResultMap = ({ query, id }: Props) => {
                   // distance={heritage.distance}
                   // isActive
                   imageUrl={heritage['imgPath']}
-                  key={heritage['externalId']}
-                  id={heritage['externalId']}
+                  key={heritage['externalId'] ?? heritage['external_id']}
+                  id={heritage['externalId'] ?? heritage['external_id']}
                   title={heritage.name}
                   address={heritage.address}
                   distance={heritage.distance}
