@@ -35,8 +35,6 @@ export function PlaceDetailPage() {
 
   const { badges, addBadge, location } = useDormungStore();
 
-  console.log('gyu detail', location);
-
   const [heritage, setHeritage] = useState<any | null>(null);
 
   useEffect(() => {
@@ -46,8 +44,6 @@ export function PlaceDetailPage() {
     };
     fetch();
   }, [placeId, location]);
-
-  console.log(heritage);
 
   const onCompleteAudio = () => {
     if (!placeId) return;
@@ -77,7 +73,7 @@ export function PlaceDetailPage() {
   //     "script": "귤 좋아허우꽈? 그럼 여기 오민 진짜 취향 저격이우다잉.
   // 감귤박물관은 말이주게, 제주 감귤에 대해 몬딱 다 알 수 있는 곳이우다.\n입구 안내판 보멍 “국내서 처음 생긴 감귤 전문 박물관”이라 허는데, 안 들어가보민 귤 종류가 얼만큼 많은지 놀라지 않을 수 없을 껄?\n전시실에는 옛날에 쓰던 감귤 상자 포장지서부터, 감귤 따는 농기구, 세계 각국 감귤까지 몽땅 전시돼 있수다.\n근데 진짜 재미진 건 야외 체험장이우다잉. 계절 맞춰 가면 귤 따기 체험도 해볼 수 있고, 귤잼 만들기도 직접 해볼 수 있수다.\n박물관 정원에는 감귤나무만 해도 80종 넘게 심어져 있고, 거기다 아열대 과일나무들도 자라나서 산책하는 재미도 쏠쏠헙디다.\n안내판 보멍 어린이 놀이터도 잘 돼 있고, 피크닉 자리도 있으멍 하루종일 가족이랑 놀다 가기 딱 좋수다잉.\n제주 여행 와서 이만큼 귤 향기 가득한 박물관, 진짜 흔치 않우다. 혼저 한 번 가보주게 마씸!"
   // }
-  const isExistAudio = !!heritage?.audioUrl;
+  const isExistAudio = !!heritage?.script;
 
   return (
     <Box className="bg-[#558CF5] h-screen">
