@@ -60,7 +60,7 @@ export const handlers = [
     }
 
     // 가져온 query 값으로 데이터를 필터링합니다.
-    const data = MOCK_DATA.find((data: any) => data?.external_id === id);
+    const data = MOCK_DATA.find((data: any) => data?.externalId === id);
     return HttpResponse.json(data);
   }),
 ];

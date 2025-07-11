@@ -19,7 +19,7 @@ export function SearchResultList({ results, onSelect }: Props) {
           key={heritage.id}
           onClick={() => {
             onSelect(heritage);
-            navigate(`/search?query=${encodeURIComponent(heritage.name)}&id=${heritage['external_id']}`);
+            navigate(`/search?query=${encodeURIComponent(heritage.name)}&id=${heritage['externalId']}`);
           }}
           className="flex items-start gap-4 p-4 hover:bg-gray-50 cursor-pointer"
         >
