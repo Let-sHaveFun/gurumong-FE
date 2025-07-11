@@ -41,15 +41,15 @@ export const SpotCard = ({ id, imageUrl, title, address, distance, isActive = fa
 
         <div className="flex flex-col justify-between flex-1">
           <div className="flex-1 flex items-center justify-between">
-            <div className="flex flex-col items-start">
-              <Text typography="body1" className={cn(typography.body1)}>
+            <div className="flex flex-col items-start gap-1">
+              <Text typography="body1" className={cn(typography.body1, 'text-left line-clamp-1')}>
                 {title}
               </Text>
-              <Text typography="body3" className={cn(typography.body3)}>
+              <Text typography="body3" className={cn(typography.body3, 'line-clamp-1')}>
                 {address}
               </Text>
               <Text typography="body3" className={cn('text-[#558CF5]', typography.body3)}>
-                내 위치로부터 {distance}m
+                내 위치로부터 {Math.round(distance * 1000)}m
               </Text>
             </div>
 
