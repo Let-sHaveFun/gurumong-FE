@@ -19,7 +19,7 @@ export const KakaoMap = () => {
   const [_selectedHeritage, setSelectedHeritage] = useState<Heritage | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeButton, setActiveButton] = useState<'list' | 'bookmark' | 'explore' | null>(null);
-  const [activeHeritageId, setActiveHeritageId] = useState<string | null>(null);
+  const [activeHeritageId, setActiveHeritageId] = useState<any | null>(null);
   const [_center, setCenter] = useState<Location | null>(null);
 
   const mapRef = useRef<kakao.maps.Map | null>(null);
@@ -51,7 +51,7 @@ export const KakaoMap = () => {
           console.log('gyu', heritages);
           setHeritages(heritages);
           if (heritages.length > 0) {
-            setActiveHeritageId(heritages[0].id);
+            setActiveHeritageId(heritages[0]['externalId']);
           }
         } catch (error) {
           console.error('유적지 정보를 불러오는 데 실패했습니다:', error);
