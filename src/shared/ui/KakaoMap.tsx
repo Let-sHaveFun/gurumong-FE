@@ -10,10 +10,13 @@ import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { SearchBar } from '@/shared/ui/SearchBar';
 import { NoResult } from '@/shared/ui/NoResult';
 import LoadingSpinner from '@/shared/ui/LoadingSpinner';
+import { useDormungStore } from '../store';
 
 type Location = { lat: number; lng: number };
 
 export const KakaoMap = () => {
+  const { setLocation: setGlobalLocation } = useDormungStore();
+
   const [location, setLocation] = useState<Location | null>(null);
   const [heritages, setHeritages] = useState<any[]>([]);
   const [_selectedHeritage, setSelectedHeritage] = useState<Heritage | null>(null);
@@ -44,6 +47,7 @@ export const KakaoMap = () => {
         const { latitude, longitude } = position.coords;
         const userLocation = { lat: latitude, lng: longitude };
         setLocation(userLocation);
+        setGlobalLocation(userLocation);
         setCenter(userLocation);
 
         try {
@@ -51,6 +55,7 @@ export const KakaoMap = () => {
           console.log('gyu', heritages);
           setHeritages(heritages);
           if (heritages.length > 0) {
+            console.log('gyu', heritages, heritages[0]['externalId']);
             setActiveHeritageId(heritages[0]['externalId']);
           }
         } catch (error) {

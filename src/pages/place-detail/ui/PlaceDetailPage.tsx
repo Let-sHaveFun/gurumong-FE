@@ -33,7 +33,9 @@ export function PlaceDetailPage() {
 
   const [isBadgeOpen, setIsBadgeOpen] = useState(false);
 
-  const { badges, addBadge } = useDormungStore();
+  const { badges, addBadge, location } = useDormungStore();
+
+  console.log('gyu detail', location);
 
   const [heritage, setHeritage] = useState<any | null>(null);
 
