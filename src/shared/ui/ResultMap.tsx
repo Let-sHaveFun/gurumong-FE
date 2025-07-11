@@ -4,6 +4,8 @@ import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from '@/shared/ui/dr
 import { SpotCard } from '@/pages/home/ui/SpotCard';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { getHeritageById } from '@/mocks/getHeritageById';
+import { useDormungStore } from '../store';
+import LoadingSpinner from './LoadingSpinner';
 
 type Props = {
   query: string;
@@ -11,17 +13,35 @@ type Props = {
 };
 
 export const ResultMap = ({ query, id }: Props) => {
+  const { location } = useDormungStore();
+  const [isLoading, setIsLoading] = useState(false);
   const [heritage, setHeritage] = useState<any | null>(null);
 
   useEffect(() => {
     const fetch = async () => {
-      const found = await getHeritageById(id);
-      setHeritage(found);
+      setIsLoading(true);
+      try {
+        const found = await getHeritageById(id, location.lat, location.lng);
+        setHeritage(found);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
+
     fetch();
-  }, [id]);
+  }, [id, location]);
 
   console.log(heritage);
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   if (!heritage) {
     return <p className="text-center pt-10">"{query}"에 대한 유적지를 찾을 수 없습니다.</p>;
@@ -60,8 +80,8 @@ export const ResultMap = ({ query, id }: Props) => {
                   // distance={heritage.distance}
                   // isActive
                   imageUrl={heritage['imgPath']}
-                  key={heritage['externalId']}
-                  id={heritage['externalId']}
+                  key={heritage['externalId'] ?? heritage['external_id']}
+                  id={heritage['externalId'] ?? heritage['external_id']}
                   title={heritage.name}
                   address={heritage.address}
                   distance={heritage.distance}

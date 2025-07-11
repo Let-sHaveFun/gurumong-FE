@@ -1,7 +1,11 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
-export type DormungState = { badges: { id: string; name: string; image: string }[]; isFirstVisit: boolean };
+export type DormungState = {
+  badges: { id: string; name: string; image: string }[];
+  isFirstVisit: boolean;
+  location: { lat: number; lng: number };
+};
 export type Badge = { id: string; name: string; image: string };
 
 const INITIAL_BADGES = [
@@ -30,11 +34,13 @@ const INITIAL_BADGES = [
 const initialState: DormungState = {
   isFirstVisit: true,
   badges: INITIAL_BADGES,
+  location: { lat: 0, lng: 0 },
 };
 
 interface DormungAction {
   addBadge: (badge: Badge) => void;
   updateIsFirstVisit: (isFirstVisit: boolean) => void;
+  setLocation: (location: { lat: number; lng: number }) => void;
 }
 type DormungStore = DormungState & DormungAction;
 
@@ -43,8 +49,10 @@ export const useDormungStore = create<DormungStore>()(
     (set) => ({
       isFirstVisit: initialState.isFirstVisit,
       badges: initialState.badges,
+      location: initialState.location,
       addBadge: (badge: Badge) => set((state) => ({ ...state, badges: [...state.badges, badge] })),
       updateIsFirstVisit: (isFirstVisit: boolean) => set((state) => ({ ...state, isFirstVisit })),
+      setLocation: (location: { lat: number; lng: number }) => set((state) => ({ ...state, location })),
     }),
     {
       name: 'dormung',

@@ -10,16 +10,19 @@ import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { SearchBar } from '@/shared/ui/SearchBar';
 import { NoResult } from '@/shared/ui/NoResult';
 import LoadingSpinner from '@/shared/ui/LoadingSpinner';
+import { useDormungStore } from '../store';
 
 type Location = { lat: number; lng: number };
 
 export const KakaoMap = () => {
+  const { setLocation: setGlobalLocation } = useDormungStore();
+
   const [location, setLocation] = useState<Location | null>(null);
   const [heritages, setHeritages] = useState<any[]>([]);
   const [_selectedHeritage, setSelectedHeritage] = useState<Heritage | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [activeButton, setActiveButton] = useState<'list' | 'bookmark' | 'explore' | null>(null);
-  const [activeHeritageId, setActiveHeritageId] = useState<string | null>(null);
+  const [activeHeritageId, setActiveHeritageId] = useState<any | null>(null);
   const [_center, setCenter] = useState<Location | null>(null);
 
   const mapRef = useRef<kakao.maps.Map | null>(null);
@@ -44,6 +47,7 @@ export const KakaoMap = () => {
         const { latitude, longitude } = position.coords;
         const userLocation = { lat: latitude, lng: longitude };
         setLocation(userLocation);
+        setGlobalLocation(userLocation);
         setCenter(userLocation);
 
         try {
