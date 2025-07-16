@@ -9,5 +9,5 @@ export const fetchHeritageById = async (id: string, lat: number, lng: number) =>
   // const data = await response.json();
   // return data ?? null;
   const response = await apiClient.get<Heritage>(`/tour-spots/detail?contentId=${id}&latitude=${lat}&longitude=${lng}`);
-  return response;
+  return response.data;
 };
