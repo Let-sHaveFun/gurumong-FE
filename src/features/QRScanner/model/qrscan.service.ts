@@ -13,11 +13,17 @@ export const qrService = {
     }
   },
 
+  _isPlaceId: (value: string): boolean => {
+    return !isNaN(Number(value));
+  },
+
   _handleUrl: (url: string, navigate: (path: string) => void) => {
     try {
       const urlObj = new URL(url);
       if (qrService._isInternalUrl(url)) {
         navigate(urlObj.pathname + urlObj.search + urlObj.hash);
+      } else if (qrService._isPlaceId(url)) {
+        navigate(`/place/${url}`);
       } else {
         window.open(url, '_blank');
       }
