@@ -1,4 +1,4 @@
-import { useQRScanner, type UseQRScannerProps } from './useQRScanner';
+import { useQRScanner, type UseQRScannerProps } from '../model/useQRScanner';
 
 export function QRScanner({ onScan }: UseQRScannerProps) {
   const { error, videoRef } = useQRScanner({ onScan });
