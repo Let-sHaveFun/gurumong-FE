@@ -37,6 +37,7 @@ export function PlaceDetailView({ heritage }: { heritage: Heritage }) {
     // save 데이터 저장
   };
 
+  const audioUrl = heritage?.audioUrl.replace('\r', '');
   const isHaveScript = !!heritage?.script;
   return (
     <Box className="bg-[#558CF5] h-screen">
@@ -69,7 +70,7 @@ export function PlaceDetailView({ heritage }: { heritage: Heritage }) {
 
         {isHaveScript && (
           <FixedBottom className="p-0">
-            <AudioPlayer onCompleteAudio={onCompleteAudio} audioUrl={heritage?.audioUrl ?? ''} />
+            <AudioPlayer onCompleteAudio={onCompleteAudio} audioUrl={audioUrl} />
           </FixedBottom>
         )}
 
