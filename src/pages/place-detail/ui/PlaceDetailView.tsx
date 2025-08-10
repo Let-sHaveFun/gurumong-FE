@@ -37,8 +37,11 @@ export function PlaceDetailView({ heritage }: { heritage: Heritage }) {
     // save 데이터 저장
   };
 
-  const audioUrl = heritage?.audioUrl.replace('\r', '');
+  const audioUrlRaw = heritage?.audioUrl ?? '';
+  const audioUrl = audioUrlRaw.replace(/\r|\n/g, '').trim();
   const isHaveScript = !!heritage?.script;
+  const showPlayer = isHaveScript && Boolean(audioUrl);
+
   return (
     <Box className="bg-[#558CF5] h-screen">
       <Flex gap="$100" flexDirection="column" padding="$000" className="flex flex-col h-full">
@@ -68,7 +71,7 @@ export function PlaceDetailView({ heritage }: { heritage: Heritage }) {
           </div>
         </section>
 
-        {isHaveScript && (
+        {showPlayer && (
           <FixedBottom className="p-0">
             <AudioPlayer onCompleteAudio={onCompleteAudio} audioUrl={audioUrl} />
           </FixedBottom>
