@@ -1,8 +1,10 @@
 import { useRef, useEffect, useState } from 'react';
 import { IconButton, Text } from '@vapor-ui/core';
 import { PlayIcon, PauseIcon } from '@vapor-ui/icons';
+
 import { ProgressBar } from '@/shared/ui/ProgressBar';
 import { cn, typography } from '@/shared/style';
+import { formatTime } from '../lib/time';
 
 export function AudioPlayer({ onCompleteAudio, audioUrl }: { onCompleteAudio: () => void; audioUrl: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -11,58 +13,62 @@ export function AudioPlayer({ onCompleteAudio, audioUrl }: { onCompleteAudio: ()
   const [duration, setDuration] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
+  // URL 변경 시 오디오 초기화 + 메타데이터 로드 시도
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    setIsPlaying(false);
+    setCurrentTime(0);
+    setDuration(0);
+    setIsLoading(true);
+    audio.pause();
+    audio.currentTime = 0;
+    audio.load();
+  }, [audioUrl]);
+
+  // 리스너는 1회만 등록
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const handleTimeUpdate = () => {
-      setCurrentTime(audio.currentTime);
-    };
-
-    const handleLoadedMetadata = () => {
-      setDuration(audio.duration);
-      setIsLoading(false);
-    };
-
+    const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
+    const handleLoadedMetadata = () => setDuration(audio.duration || 0);
+    const handleCanPlay = () => setIsLoading(false);
     const handlePlay = () => setIsPlaying(true);
     const handlePause = () => setIsPlaying(false);
-
     const handleEnded = () => {
       setIsPlaying(false);
       setCurrentTime(0);
-      // 오디오 재생 위치를 처음으로 되돌림
       audio.currentTime = 0;
       onCompleteAudio();
     };
-
-    // 스킵 방지
-    // const handleSeeking = () => {
-    //   console.log('스킵 시도 차단');
-    //   audio.currentTime = currentTime;
-    // };
-
-    const handleContextMenu = (e: Event) => {
-      e.preventDefault();
+    const handleError = () => {
+      setIsLoading(false);
+      setIsPlaying(false);
+      console.error('오디오 로드/재생 에러', audio.error);
     };
+    const handleContextMenu = (e: Event) => e.preventDefault();
 
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+    audio.addEventListener('canplay', handleCanPlay);
     audio.addEventListener('play', handlePlay);
     audio.addEventListener('pause', handlePause);
     audio.addEventListener('ended', handleEnded);
-    // audio.addEventListener('seeking', handleSeeking);
+    audio.addEventListener('error', handleError);
     audio.addEventListener('contextmenu', handleContextMenu);
 
     return () => {
       audio.removeEventListener('timeupdate', handleTimeUpdate);
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      audio.removeEventListener('canplay', handleCanPlay);
       audio.removeEventListener('play', handlePlay);
       audio.removeEventListener('pause', handlePause);
       audio.removeEventListener('ended', handleEnded);
-      // audio.removeEventListener('seeking', handleSeeking);
+      audio.removeEventListener('error', handleError);
       audio.removeEventListener('contextmenu', handleContextMenu);
     };
-  }, [currentTime]);
+  }, [onCompleteAudio]);
 
   const handlePlayPause = () => {
     const audio = audioRef.current;
@@ -71,30 +77,20 @@ export function AudioPlayer({ onCompleteAudio, audioUrl }: { onCompleteAudio: ()
     if (isPlaying) {
       audio.pause();
     } else {
-      // 재생이 끝났을 때 다시 재생하려면 처음부터 시작
-      if (audio.ended) {
-        audio.currentTime = 0;
-      }
+      if (audio.ended) audio.currentTime = 0;
       audio.play().catch((error) => {
         console.error('재생 실패:', error);
+        setIsLoading(false);
       });
     }
   };
 
-  //
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  };
-  //
-  // const audioUrl = 'https://collection.cloudinary.com/deggvyhsw/75da97ff00634d6a2746b3c79010f7aa';
   const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
     <div className="w-full z-20 relative ">
       {/* <audio ref={audioRef} src="/sample.mp3" preload="auto" className="hidden" /> */}
-      <audio ref={audioRef} src={audioUrl} preload="auto" className="hidden" />
+      <audio key={audioUrl} ref={audioRef} src={audioUrl} preload="metadata" playsInline className="hidden" />
 
       {/* 진행률 표시바 */}
       <div className="relative w-full h-[10px] bg-gray-200 translate-y-[7px] rounded-[16px]">
@@ -111,7 +107,6 @@ export function AudioPlayer({ onCompleteAudio, audioUrl }: { onCompleteAudio: ()
           <IconButton
             aria-label="재생/일시정지"
             onClick={handlePlayPause}
-            disabled={isLoading}
             size="xl"
             color="primary"
             variant="fill"

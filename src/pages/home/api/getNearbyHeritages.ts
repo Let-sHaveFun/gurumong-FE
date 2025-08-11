@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { apiClient } from '@/shared/lib/axios';
 
 export type Heritage = {
   externalId: string;
@@ -20,9 +20,13 @@ export const getNearbyHeritages = async (lat: number, lng: number, radius: numbe
   // longitude (required): 경도 (BigDecimal)
   // radius (optional): 반경(km), 기본값 10, 최대 10
 
-  const response = await axios.get<Heritage[]>('https://dormung.goorm.training/api/tour-spots/location', {
+  const response = await apiClient.get<Heritage[]>('/tour-spots/location', {
     params: { latitude: lat, longitude: lng, radius },
   });
+
+  // const response = await axios.get<Heritage[]>('https://dormung.goorm.training/api/tour-spots/location', {
+  //   params: { latitude: lat, longitude: lng, radius },
+  // });
 
   return response.data;
 };
